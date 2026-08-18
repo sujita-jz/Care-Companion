@@ -50,7 +50,7 @@ Care Companion lets users ask healthcare-information questions through **text**,
 - Edit dosage, frequency, duration, start date, and reminder times
 - Medication calendar
 - APScheduler reminder dispatcher
-- Optional Twilio WhatsApp schedule alerts
+- Optional WhatsApp schedule alerts
 
 ### Multilingual interface
 
@@ -87,7 +87,7 @@ Care Companion lets users ask healthcare-information questions through **text**,
 | Gemini interface | Interactions API / Google Generative Language API |
 | Voice recognition | Faster-Whisper `large-v3` |
 | Scheduling | APScheduler |
-| WhatsApp alerts | Twilio |
+| WhatsApp alerts | 
 
 ---
 
@@ -108,7 +108,7 @@ carecompanion/
 │   ├── gemini.py                  # Gemini 3.6 integration
 │   ├── language.py                # Detection and translation helpers
 │   ├── voice.py                   # Faster-Whisper transcription
-│   ├── notifications.py            # Twilio WhatsApp integration
+│   ├── notifications.py            # WhatsApp integration
 │   └── scheduler.py                # Reminder dispatcher
 ├── templates/                     # Jinja2 pages
 ├── static/
@@ -128,7 +128,6 @@ carecompanion/
 - A Gemini API key from Google AI Studio
 - FFmpeg for browser-recorded WebM voice files
 - Optional: NVIDIA CUDA GPU for faster Faster-Whisper inference
-- Optional: Twilio account with WhatsApp configured
 
 ### Install FFmpeg
 
@@ -211,12 +210,6 @@ GEMINI_MODEL=gemini-3.6-flash
 WHISPER_MODEL=large-v3
 WHISPER_DEVICE=cpu
 WHISPER_COMPUTE_TYPE=int8
-
-# Optional Twilio WhatsApp configuration
-TWILIO_ACCOUNT_SID=
-TWILIO_AUTH_TOKEN=
-TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
-```
 
 ### CUDA configuration
 
@@ -355,12 +348,6 @@ Text response saved to chat history
 4. Confirm/edit the medicine plan.
 5. Save the schedule.
 6. The reminder worker checks schedules every minute.
-7. If Twilio is configured, WhatsApp alerts are sent to the configured profile number.
-
-### Twilio note
-
-Twilio WhatsApp delivery often requires an approved sender, recipient opt-in, and approved templates depending on the account and destination.
-
 ---
 
 ## Useful API endpoints
@@ -376,67 +363,6 @@ Twilio WhatsApp delivery often requires an approved sender, recipient opt-in, an
 | `/api/chats/<id>/share` | POST | Create/reuse read-only share URL |
 | `/api/medications` | POST | Save medication schedule |
 | `/api/ui/translate` | POST | Translate static UI text to profile language |
-
----
-
-## Troubleshooting
-
-### Gemini response is unavailable
-
-Check `.env`:
-
-```env
-GEMINI_API_KEY=your_key
-GEMINI_MODEL=gemini-3.6-flash
-```
-
-Restart the app after editing `.env`.
-
-The application provides a concise knowledge-base fallback if the model is unavailable.
-
-### Voice transcription fails
-
-Confirm:
-
-```bash
-ffmpeg -version
-```
-
-Then verify Faster-Whisper settings in `.env`. For systems without CUDA, use:
-
-```env
-WHISPER_DEVICE=cpu
-WHISPER_COMPUTE_TYPE=int8
-```
-
-### Knowledge base does not answer a question
-
-- Confirm the document has readable text.
-- Confirm the document is located under `knowledge_base/`.
-- Restart the app after adding or changing files.
-- Ensure the question is covered by the approved source material.
-
-### UI language does not update
-
-- Save the selected language in **My Profile**.
-- Refresh the page with `Ctrl + Shift + R`.
-- Confirm Gemini API credentials are configured; static UI falls back to English when translation is unavailable.
-
----
-
-## Production recommendations
-
-Before real-world deployment with healthcare users:
-
-- Use HTTPS and secure session cookies.
-- Replace SQLite with PostgreSQL or another managed database.
-- Add CSRF protection and rate limiting.
-- Add virus scanning and strict validation for file uploads.
-- Replace APScheduler with a durable production worker/scheduler.
-- Encrypt data and backups; redact logs.
-- Add share-link expiry/revocation.
-- Clinically review and version all knowledge-base content.
-- Conduct privacy, security, legal, and medical-safety review for the deployment region.
 
 ---
 
