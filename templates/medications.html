@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Reminders - Care Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --g950: #052e1f;
+            --g900: #0a3d2e;
+            --g800: #0f5d44;
+            --g700: #137a59;
+            --g600: #16a085;
+            --g100: #d1f2e8;
+            --g50: #e8f8f3;
+            --mint: #f6fffd;
+            --muted: #6b7c72;
+            --ink: #0b1f18
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--mint);
+            color: var(--ink);
+            min-height: 100vh
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        /* Topbar */
+        .topbar {
+            height: 64px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(10, 61, 46, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800
+        }
+
+        .mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0a3d2e, #16a085);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-family: 'Fraunces';
+            font-weight: 800
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .btn {
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 100px;
+            border: none;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .btn-ghost {
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            color: var(--g900)
+        }
+
+        .btn-primary {
+            background: var(--g900);
+            color: white
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 61, 46, 0.2)
+        }
+
+        /* Layout */
+        .wrap {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+            padding: 24px 20px
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px
+        }
+
+        .header h1 {
+            font-family: 'Fraunces';
+            font-size: 32px;
+            color: var(--g900);
+            letter-spacing: -0.02em
+        }
+
+        .header p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 6px;
+            line-height: 1.5;
+            max-width: 600px
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 12px rgba(10, 61, 46, 0.04)
+        }
+
+        .stat b {
+            font-size: 20px;
+            color: var(--g900);
+            display: block;
+            font-family: 'Fraunces'
+        }
+
+        .stat span {
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700
+        }
+
+        /* Info */
+        .info-box {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #065f46;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px
+        }
+
+        .info-box .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--g900);
+            color: white;
+            display: grid;
+            place-items: center;
+            flex: 0 0 28px;
+            font-weight: 700
+        }
+
+        /* Grid */
+        .meds-grid {
+            display: grid;
+            grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px
+        }
+
+        .med-card {
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(10, 61, 46, 0.05);
+            overflow: hidden;
+            position: relative;
+            transition: .2s
+        }
+
+        .med-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(10, 61, 46, 0.1)
+        }
+
+        .med-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--g900), var(--g600))
+        }
+
+        .med-top {
+            padding: 16px 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start
+        }
+
+        .med-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--g900);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 16px
+        }
+
+        .med-actions {
+            display: flex;
+            gap: 6px
+        }
+
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            border: 1px solid rgba(10, 61, 46, 0.1);
+            background: white;
+            color: var(--g800);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .icon-btn:hover {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #dc2626
+        }
+
+        .icon-btn.edit:hover {
+            background: var(--g50);
+            border-color: var(--g100);
+            color: var(--g900)
+        }
+
+        .med-body {
+            padding: 12px 18px 16px
+        }
+
+        .med-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--g900);
+            margin-top: 4px
+        }
+
+        .med-meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px
+        }
+
+        .med-grid {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 8px
+        }
+
+        .field-box {
+            background: #f6fffd;
+            border: 1px solid #e0f2ec;
+            border-radius: 10px;
+            padding: 8px 10px
+        }
+
+        .field-box label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--g700);
+            display: block
+        }
+
+        .field-box div {
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-top: 2px;
+            word-break: break-word
+        }
+
+        .times {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px
+        }
+
+        .time-chip {
+            background: var(--g900);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: monospace
+        }
+
+        .prec {
+            background: #fff9e6;
+            border: 1px solid #ffecb3;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #665500
+        }
+
+        .dates {
+            margin-top: 10px;
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .empty {
+            background: white;
+            border: 1px dashed rgba(10, 61, 46, 0.15);
+            border-radius: 20px;
+            padding: 48px 24px;
+            text-align: center;
+            grid-column: 1/-1
+        }
+
+        .empty-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: var(--g50);
+            color: var(--g600);
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            margin: 0 auto 12px
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 46, 31, 0.5);
+            backdrop-filter: blur(8px);
+            display: none;
+            place-items: center;
+            z-index: 100;
+            padding: 20px
+        }
+
+        .modal.open {
+            display: grid
+        }
+
+        .modal-card {
+            width: min(560px, 100%);
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 24px 80px rgba(10, 61, 46, 0.3);
+            overflow: hidden;
+            max-height: 90vh;
+            overflow: auto
+        }
+
+        .modal-head {
+            padding: 20px 22px;
+            border-bottom: 1px solid rgba(10, 61, 46, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .modal-body {
+            padding: 20px 22px;
+            display: grid;
+            gap: 14px
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 12px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #137a59
+        }
+
+        .input, .select {
+            height: 42px;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            border-radius: 12px;
+            padding: 0 12px;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+            background: white
+        }
+
+        .input:focus, .select:focus {
+            border-color: var(--g600);
+            box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.1)
+        }
+
+        .textarea {
+            min-height: 70px;
+            padding: 10px 12px;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            border-radius: 12px;
+            font-size: 13px;
+            outline: none;
+            resize: vertical;
+            font-family: inherit
+        }
+
+        .times-wrap {
+            display: grid;
+            gap: 8px
+        }
+
+        .time-row {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .time-row input[type=time] {
+            flex: 1;
+            height: 38px;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            border-radius: 10px;
+            padding: 0 10px
+        }
+
+        .btn-primary {
+            height: 44px;
+            border-radius: 100px;
+            border: none;
+            background: var(--g900);
+            color: white;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        .btn-ghost {
+            height: 44px;
+            border-radius: 100px;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            background: white;
+            color: var(--g900);
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        @media (max-width: 700px) {
+            .meds-grid {
+                grid-template-columns:1fr
+            }
+
+            .grid2 {
+                grid-template-columns:1fr
+            }
+
+            .header {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">
+        <div class="mark">C</div>
+        Care Companion <span style="font-weight:400;color:#16a085;margin-left:4px">• Medications</span></div>
+    <div class="nav">
+        <a href="/chat" class="btn btn-ghost">💬 Chat</a>
+        <a href="/profile" class="btn btn-ghost">👤 Profile</a>
+        <a href="/" class="btn btn-ghost">🏠 Home</a>
+        <button class="btn btn-primary" onclick="openAddModal()">+ Add Medicine</button>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="header">
+        <div>
+            <h1>Medication Reminders</h1>
+            <p>Add, view, and remove your medicines. When you add a medicine, the medication card is <strong>immediately
+                emailed via SMTP</strong> to your profile email <strong style="color:var(--g900)">{{ profile.email if
+                profile and profile.email else 'your profile email' }}</strong>. You will also get daily reminders at
+                the times you choose.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div class="btn btn-ghost" style="pointer-events:none">📧 Email: {{ profile.email if profile else 'Not set'
+                }}
+            </div>
+            <button class="btn btn-primary" onclick="openAddModal()">+ Add Medicine</button>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><b id="statTotal">{{ schedules|length }}</b><span>Active Reminders</span></div>
+        <div class="stat"><b id="statToday">0</b><span>Doses Today</span></div>
+        <div class="stat"><b style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{
+            profile.email if profile else 'Not set' }}</b><span>Profile Email (SMTP To)</span></div>
+        <div class="stat"><b>SMTP</b><span>Email on Create + Daily</span></div>
+    </div>
+
+    <div class="info-box">
+        <div class="icon">✉️</div>
+        <div>
+            <strong>How email reminders work:</strong><br>
+            1. <strong>When you add medicine</strong> → Medication card is mailed <strong>immediately via SMTP</strong>
+            to your profile email <strong>{{ profile.email if profile else '' }}</strong><br>
+            2. <strong>Daily</strong> → At each time you set (e.g., 08:00, 20:00), you get a reminder email with the
+            card + precautions<br>
+            3. <strong>Remove anytime</strong> → Click Remove → reminders stop, no more emails<br>
+            <span style="font-size:10px;color:#5b7c72">Configure SMTP in .env: SMTP_EMAIL (sender), SMTP_PASSWORD. If not set, emails logged to email_log.txt for demo.</span>
+        </div>
+    </div>
+
+    <div class="meds-grid" id="medsGrid">
+        {% for s in schedules %}
+        <div class="med-card" data-id="{{ s['id'] }}">
+            <div class="med-top">
+                <div class="med-icon">{{ s['medicine_name'][0]|upper if s['medicine_name'] else 'M' }}</div>
+                <div class="med-actions">
+                    <button class="icon-btn edit" onclick='editMed({{ s|tojson|safe }})' title="Edit">✏️</button>
+                    <button class="icon-btn" onclick="deleteMed({{ s['id'] }})" title="Remove">🗑️</button>
+                </div>
+            </div>
+            <div class="med-body">
+                <div class="med-name">{{ s['medicine_name'] }}</div>
+                <div class="med-meta">Added {{ s['created_at'].split(' ')[0] if s['created_at'] else '' }} • {{
+                    s['frequency'] or '' }}
+                </div>
+                <div class="med-grid">
+                    <div class="field-box"><label>Dosage</label>
+                        <div>{{ s['dosage'] or '-' }}</div>
+                    </div>
+                    <div class="field-box"><label>Frequency</label>
+                        <div>{{ s['frequency'] or '-' }}</div>
+                    </div>
+                    <div class="field-box"><label>Duration</label>
+                        <div>{{ s['duration'] or '-' }}</div>
+                    </div>
+                    <div class="field-box"><label>Route</label>
+                        <div>Oral</div>
+                    </div>
+                </div>
+                {% if s['instructions'] %}
+                <div class="field-box" style="margin-top:8px"><label>Instructions</label>
+                    <div>{{ s['instructions'] }}</div>
+                </div>
+                {% endif %}
+                <div class="times">
+                    {% for t in s['times'] %}
+                    <span class="time-chip">⏰ {{ t }}</span>
+                    {% endfor %}
+                </div>
+                <div class="prec"><strong>⚠️ Precautions:</strong> {{ s['precautions'] or 'Follow doctor advice' }}
+                </div>
+                <div class="dates">
+                    <span>📅 Start: {{ s['start_date'] or 'Today' }}</span>
+                    <span>End: {{ s['end_date'] or 'Ongoing' }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="emptyState" style="display:none">
+        <div class="empty">
+            <div class="empty-icon">💊</div>
+            <h3 style="font-family:Fraunces;color:var(--g900)">No reminders yet</h3>
+            <p style="font-size:13px;color:var(--muted);margin-top:6px;max-width:360px;margin-left:auto;margin-right:auto">
+                Add your first medicine manually or from prescription cards in chat. When you add, the medication card
+                will be emailed via SMTP to <strong>{{ profile.email if profile else 'your profile email' }}</strong>.
+            </p>
+            <button class="btn btn-primary" style="margin-top:16px" onclick="openAddModal()">+ Add Your First Medicine
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Add/Edit Modal -->
+<div class="modal" id="medModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <h3 style="font-family:Fraunces;color:var(--g900)" id="modalTitle">Add New Medicine</h3>
+            <button onclick="closeModal()"
+                    style="width:36px;height:36px;border-radius:10px;border:1px solid #e5e7eb;background:white;cursor:pointer">
+                ✕
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="grid2">
+                <div class="field"><label class="label">Medicine Name *</label><input class="input" id="m_name"
+                                                                                      placeholder="e.g. Syp CALPOL (250/5)">
+                </div>
+                <div class="field"><label class="label">Dosage *</label><input class="input" id="m_dosage"
+                                                                               placeholder="e.g. 4 ml or 500mg"></div>
+                <div class="field"><label class="label">Frequency</label><input class="input" id="m_freq"
+                                                                                placeholder="e.g. Q6H or Twice daily">
+                </div>
+                <div class="field"><label class="label">Duration</label><input class="input" id="m_duration"
+                                                                               placeholder="e.g. 5 days"></div>
+            </div>
+            <div class="field"><label class="label">Instructions</label><input class="input" id="m_instructions"
+                                                                               placeholder="e.g. After food or दिन में 4 बार">
+            </div>
+            <div class="field"><label class="label">Precautions</label><textarea class="textarea" id="m_precautions"
+                                                                                 placeholder="e.g. Take with water, avoid driving if drowsy"></textarea>
+            </div>
+            <div class="grid2">
+                <div class="field"><label class="label">Start Date</label><input class="input" type="date" id="m_start">
+                </div>
+                <div class="field"><label class="label">End Date</label><input class="input" type="date" id="m_end">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Reminder Times (based on frequency) — Email will be sent via SMTP at these
+                    times</label>
+                <div class="times-wrap" id="timesWrap"></div>
+                <button type="button" onclick="addTimeRow()"
+                        style="margin-top:8px;background:var(--g50);border:1px dashed var(--g100);border-radius:10px;padding:8px 12px;font-size:12px;cursor:pointer">
+                    + Add time
+                </button>
+            </div>
+            <div style="display:flex;gap:10px">
+                <button class="btn-ghost" style="flex:1" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" style="flex:2" onclick="saveMed()">💾 Save & Email Card via SMTP</button>
+            </div>
+            <div style="font-size:11px;color:#2a5a4a;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;line-height:1.5">
+                📧 <strong>Immediate SMTP Email:</strong> When you click Save, medication card will be <strong>mailed
+                immediately</strong> to <strong>{{ profile.email if profile else 'your profile email' }}</strong>
+                (profile email). Daily reminders also sent at times above.<br>
+                <span style="font-size:10px;color:#5b7c72">If SMTP not configured in .env, emails logged to email_log.txt. Configure SMTP_EMAIL, SMTP_PASSWORD (Gmail app password).</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let editingId = null;
+
+    function openAddModal() {
+        editingId = null;
+        document.getElementById('modalTitle').innerText = 'Add New Medicine';
+        document.getElementById('m_name').value = '';
+        document.getElementById('m_dosage').value = '';
+        document.getElementById('m_freq').value = '';
+        document.getElementById('m_duration').value = '';
+        document.getElementById('m_instructions').value = '';
+        document.getElementById('m_precautions').value = '';
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('m_start').value = today;
+        document.getElementById('m_end').value = '';
+        const wrap = document.getElementById('timesWrap');
+        wrap.innerHTML = '';
+        addTimeRow('08:00');
+        document.getElementById('medModal').classList.add('open');
+    }
+
+    function editMed(data) {
+        // data is schedule object from Jinja tojson
+        editingId = null; // For simplicity, we create new and delete old if needed, or just fill and save as new
+        // If you want true edit, we could delete old and create new
+        if (confirm('Edit this medicine? This will open form with current values. You can save as new and then remove old if you want.')) {
+            document.getElementById('modalTitle').innerText = 'Edit Medicine (Save as new)';
+            document.getElementById('m_name').value = data.medicine_name || '';
+            document.getElementById('m_dosage').value = data.dosage || '';
+            document.getElementById('m_freq').value = data.frequency || '';
+            document.getElementById('m_duration').value = data.duration || '';
+            document.getElementById('m_instructions').value = data.instructions || '';
+            document.getElementById('m_precautions').value = data.precautions || '';
+            document.getElementById('m_start').value = data.start_date || new Date().toISOString().split('T')[0];
+            document.getElementById('m_end').value = data.end_date || '';
+            const wrap = document.getElementById('timesWrap');
+            wrap.innerHTML = '';
+            let times = [];
+            try {
+                times = typeof data.times === 'string' ? JSON.parse(data.times) : data.times;
+                if (!Array.isArray(times)) times = [times];
+            } catch (e) {
+                times = ['08:00'];
+            }
+            if (!times || !times.length) times = ['08:00'];
+            times.forEach(t => addTimeRow(t));
+            document.getElementById('medModal').classList.add('open');
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('medModal').classList.remove('open');
+    }
+
+    function addTimeRow(val) {
+        const wrap = document.getElementById('timesWrap');
+        const defaults = ['08:00', '14:00', '20:00', '22:00'];
+        const row = document.createElement('div');
+        row.className = 'time-row';
+        const input = document.createElement('input');
+        input.type = 'time';
+        input.value = val || defaults[wrap.children.length % defaults.length];
+        const del = document.createElement('button');
+        del.textContent = '✕';
+        del.style.cssText = 'width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;background:white;cursor:pointer';
+        del.onclick = () => row.remove();
+        row.append(input, del);
+        wrap.appendChild(row);
+    }
+
+    async function saveMed() {
+        const times = [...document.getElementById('timesWrap').querySelectorAll('input[type=time]')].map(i => i.value).filter(Boolean);
+        if (!times.length) {
+            alert('Add at least one time');
+            return;
+        }
+        const payload = {
+            medicine_name: document.getElementById('m_name').value.trim(),
+            dosage: document.getElementById('m_dosage').value.trim(),
+            frequency: document.getElementById('m_freq').value.trim(),
+            duration: document.getElementById('m_duration').value.trim(),
+            instructions: document.getElementById('m_instructions').value.trim(),
+            precautions: document.getElementById('m_precautions').value.trim(),
+            start_date: document.getElementById('m_start').value,
+            end_date: document.getElementById('m_end').value,
+            times: times
+        };
+        if (!payload.medicine_name) {
+            alert('Medicine name required');
+            return;
+        }
+
+        const btn = document.querySelector('#medModal .btn-primary');
+        const orig = btn.innerText;
+        btn.innerText = 'Saving & Emailing via SMTP...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('/api/scheduler', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            btn.innerText = orig;
+            btn.disabled = false;
+            if (data.success) {
+                alert(`✅ Saved!\n\n📧 Medication card emailed via SMTP to: ${data.email_sent_to || 'your profile email'}\n⏰ Times: ${times.join(', ')}`);
+                closeModal();
+                location.reload();
+            } else {
+                alert('Error: ' + (data.error || 'unknown'));
+            }
+        } catch (e) {
+            btn.innerText = orig;
+            btn.disabled = false;
+            alert('Error: ' + e.message);
+        }
+    }
+
+    async function deleteMed(id) {
+        if (!confirm('Remove this medication reminder? This will stop email reminders.')) return;
+        try {
+            const res = await fetch('/api/scheduler', {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id})
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert('Removed!');
+                location.reload();
+            } else {
+                alert('Could not remove: ' + (data.error || 'unknown'));
+            }
+        } catch (e) {
+            alert('Error: ' + e.message);
+        }
+    }
+
+    // Parse times that may be stringified JSON in server-rendered HTML and fix display
+    document.addEventListener('DOMContentLoaded', () => {
+        // For server-rendered cards, times might be JSON string, try to parse and display nicely
+        document.querySelectorAll('[id^="times-"]').forEach(el => {
+            // This is placeholder for times, we already have times in grid, but we can leave
+        });
+
+        // Stats: calculate doses today
+        const total = document.querySelectorAll('.med-card').length;
+        document.getElementById('statTotal').innerText = total;
+        if (total === 0) {
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('medsGrid').style.display = 'none';
+        }
+        // Rough doses today = sum of times per active med
+        let doses = 0;
+        document.querySelectorAll('.time-chip').forEach(() => doses++);
+        // If no time-chip rendered server-side for some, estimate from JS API
+        fetch('/api/scheduler').then(r => r.json()).then(list => {
+            let totalTimes = 0;
+            list.forEach(s => {
+                const t = s.times;
+                if (Array.isArray(t)) totalTimes += t.length;
+            });
+            document.getElementById('statToday').innerText = totalTimes;
+            document.getElementById('statTotal').innerText = list.length;
+            if (list.length === 0) {
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('medsGrid').style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'a236f0c988d46eb9',t:'MTc4NTQ0MTUzMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
+</html>

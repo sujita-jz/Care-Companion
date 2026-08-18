@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if is_setup %}Setup Profile{% else %}My Profile{% endif %} - Care Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --g900: #0a3d2e;
+            --g800: #0f5d44;
+            --g600: #16a085;
+            --g50: #e8f8f3;
+            --mint: #f6fffd;
+            --ink: #0b1f18;
+            --muted: #5b7c72
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--mint);
+            min-height: 100vh;
+            padding: 24px
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(60% 80% at 20% 20%, rgba(22, 160, 133, 0.12), transparent 60%), linear-gradient(180deg, #f6fffd, #e8f8f3)
+        }
+
+        .topbar {
+            width: min(980px, 100%);
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--g900)
+        }
+
+        .mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a3d2e, #16a085);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-family: 'Fraunces'
+        }
+
+        .wrap {
+            width: min(980px, 100%);
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(10, 61, 46, 0.10);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns:320px 1fr
+        }
+
+        .left {
+            background: linear-gradient(180deg, #0a3d2e, #0f5d44);
+            color: white;
+            padding: 28px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .left::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            right: -100px;
+            top: -80px;
+            background: radial-gradient(circle, rgba(22, 160, 133, 0.35), transparent 70%)
+        }
+
+        .left-inner {
+            position: relative;
+            z-index: 1
+        }
+
+        .left h2 {
+            font-family: 'Fraunces';
+            font-size: 28px;
+            line-height: 0.95;
+            letter-spacing: -0.02em
+        }
+
+        .left p {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #a7f3d0
+        }
+
+        .steps {
+            margin-top: 22px;
+            display: grid;
+            gap: 10px
+        }
+
+        .step {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 12px;
+            border-radius: 14px;
+            font-size: 12px
+        }
+
+        .step.active {
+            background: white;
+            color: var(--g900);
+            font-weight: 700
+        }
+
+        .right {
+            padding: 28px
+        }
+
+        .kicker {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #137a59
+        }
+
+        h1 {
+            font-family: 'Fraunces';
+            font-size: 26px;
+            color: var(--g900);
+            margin-top: 6px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 14px;
+            margin-top: 18px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: #137a59
+        }
+
+        .input, .select, .textarea {
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            background: white;
+            border-radius: 14px;
+            padding: 0 14px;
+            font-size: 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        .input, .select {
+            height: 44px
+        }
+
+        .textarea {
+            min-height: 84px;
+            padding: 12px 14px;
+            resize: vertical
+        }
+
+        .input:focus, .select:focus, .textarea:focus {
+            border-color: var(--g600);
+            box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.15)
+        }
+
+        .span2 {
+            grid-column: span 2
+        }
+
+        .btn {
+            height: 48px;
+            border-radius: 100px;
+            border: none;
+            background: var(--g900);
+            color: white;
+            font-weight: 700;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(10, 61, 46, 0.2)
+        }
+
+        .btn-ghost {
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            color: var(--g900)
+        }
+
+        .success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-top: 12px
+        }
+
+        .note {
+            background: #f0faf7;
+            border: 1px solid #bfe9d9;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 11px;
+            color: var(--g800);
+            margin-top: 14px
+        }
+
+        @media (max-width: 880px) {
+            .wrap {
+                grid-template-columns:1fr
+            }
+
+            .left {
+                padding: 20px
+            }
+
+            .grid {
+                grid-template-columns:1fr
+            }
+
+            .span2 {
+                grid-column: span 1
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="topbar">
+    <div class="logo">
+        <div class="mark">C</div>
+        Care <span style="color:#16a085;font-weight:400">Companion</span></div>
+    <div style="display:flex;gap:8px">
+        <a href="/chat"
+           style="text-decoration:none;background:white;border:1px solid rgba(10,61,46,0.12);padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;color:#0a3d2e">Go
+            to chat →</a>
+        <a href="/logout"
+           style="text-decoration:none;background:#fef2f2;border:1px solid #fecaca;padding:8px 14px;border-radius:100px;font-size:13px;color:#991b1b">Logout</a>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="left">
+        <div class="left-inner">
+            <div style="background:rgba(255,255,255,0.12);display:inline-flex;padding:6px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.06em">
+                PROFILE • SECURE • PRIVATE
+            </div>
+            <h2 style="margin-top:16px">{% if is_setup %}Build your<br>health profile{% else %}Your health<br>profile{%
+                endif %}</h2>
+            <p>We use this to personalize responses, check allergies, choose your preferred language, and send
+                medication reminders to your email.</p>
+            <div class="steps">
+                <div class="step active"><span>✓</span> Name • Age • Weight • Height</div>
+                <div class="step"><span>✓</span> Email • Contact • Emergency Contact</div>
+                <div class="step"><span>✓</span> Preferred Language (response language)</div>
+                <div class="step"><span>✓</span> Health Conditions • Allergies (optional)</div>
+            </div>
+            <div style="margin-top:18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:12px;font-size:11px;line-height:1.5;color:#a7f3d0">
+                🌿 Voice input answered in your chosen language. Prescription cards use your allergy info for
+                precautions. Scheduler emails go to email here.
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="kicker">{% if is_setup %}Step 2 of 2 after disclaimer{% else %}Manage profile & language{% endif
+            %}
+        </div>
+        <h1>{% if is_setup %}Tell us about you{% else %}Edit profile{% endif %}</h1>
+        {% if success %}
+        <div class="success">{{ success }}</div>
+        {% endif %}
+        <form method="POST">
+            <div class="grid">
+                <div class="field span2"><label class="label">Full Name *</label><input class="input" name="full_name"
+                                                                                        value="{{ profile.full_name if profile else '' }}"
+                                                                                        placeholder="e.g. Aarav Sharma"
+                                                                                        required></div>
+                <div class="field"><label class="label">Age</label><input class="input" type="number" name="age" min="0"
+                                                                          max="120"
+                                                                          value="{{ profile.age if profile and profile.age else '' }}"
+                                                                          placeholder="e.g. 28"></div>
+                <div class="field"><label class="label">Preferred Language * (drives response language)</label>
+                    <select class="select" name="preferred_language" required>
+                        {% for code, name in languages.items() %}
+                        <option value="{{ code }}" {% if profile and profile.preferred_language==code %}selected{% endif
+                                %}>{{ name }} ({{ code }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="field"><label class="label">Weight (kg)</label><input class="input" type="number" step="0.1"
+                                                                                  name="weight"
+                                                                                  value="{{ profile.weight if profile and profile.weight else '' }}"
+                                                                                  placeholder="e.g. 70"></div>
+                <div class="field"><label class="label">Height (cm)</label><input class="input" type="number" step="0.1"
+                                                                                  name="height"
+                                                                                  value="{{ profile.height if profile and profile.height else '' }}"
+                                                                                  placeholder="e.g. 175"></div>
+                <div class="field"><label class="label">Email for reminders *</label><input class="input" type="email"
+                                                                                            name="email"
+                                                                                            value="{{ profile.email if profile else '' }}"
+                                                                                            placeholder="your email">
+                </div>
+                <div class="field"><label class="label">Contact Number</label><input class="input" name="contact"
+                                                                                     value="{{ profile.contact if profile else '' }}"
+                                                                                     placeholder="+91 ..."></div>
+                <div class="field span2"><label class="label">Emergency Contact</label><input class="input"
+                                                                                              name="emergency_contact"
+                                                                                              value="{{ profile.emergency_contact if profile else '' }}"
+                                                                                              placeholder="Emergency contact name & number">
+                </div>
+                <div class="field span2"><label class="label">Health Conditions (comma separated)</label><textarea
+                        class="textarea" name="health_conditions" placeholder="e.g. Diabetes type 2, Hypertension">{{ profile.health_conditions if profile else '' }}</textarea>
+                </div>
+                <div class="field span2"><label class="label">Known Allergies (important for medicine
+                    safety)</label><textarea class="textarea" name="allergies"
+                                             placeholder="e.g. Penicillin, Peanuts, Dust">{{ profile.allergies if profile else '' }}</textarea>
+                </div>
+            </div>
+            <div class="note">🔒 SQLite stores this privately. ChromaDB never stores personal data, only medical
+                knowledge. You can update anytime. For medication scheduler, we use email above.
+            </div>
+            <div style="margin-top:18px;display:flex;gap:10px">
+                <button class="btn" type="submit">{% if is_setup %}Save & Go to Care Companion →{% else %}Save Changes{%
+                    endif %}
+                </button>
+                <a href="/chat" class="btn btn-ghost"
+                   style="display:inline-flex;align-items:center;text-decoration:none">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'a2365e987929f4b7',t:'MTc4NTQzNTU0NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
+</html>

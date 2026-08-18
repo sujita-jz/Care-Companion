@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Care Companion • Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g950:#052e1f;--g900:#0a3d2e;--g800:#0f5d44;--g700:#137a59;--g600:#16a085;--g100:#d1f2e8;--g50:#e8f8f3;--mint:#f6fffd;--muted:#6b7c72;--ink:#0b1f18}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--mint);color:var(--ink);height:100vh;overflow:hidden;display:flex}
+a{text-decoration:none;color:inherit}
+
+/* Sidebar */
+.sidebar{width:310px;background:linear-gradient(180deg,#0a3d2e 0%,#082a24 100%);color:#c8f0e3;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.side-top{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800}
+.mark{width:34px;height:34px;border-radius:10px;background:white;color:var(--g900);display:grid;place-items:center;font-family:'Fraunces';font-weight:800}
+.side-profile{margin-top:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:center}
+.avatar{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#16a085,#a7f3d0);display:grid;place-items:center;color:#052e1f;font-weight:800;font-size:13px}
+.side-nav{padding:12px;display:flex;flex-direction:column;gap:10px;flex:1;overflow:hidden}
+
+.btn-new{height:44px;border-radius:12px;background:white;color:var(--g900);border:none;font-weight:700;font-size:13.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;width:100%}
+.btn-new:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,255,255,0.15)}
+
+.threads-section{flex:1;display:flex;flex-direction:column;overflow:hidden;margin-top:4px}
+.threads-header{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8abfb0;padding:8px 4px;display:flex;justify-content:space-between;align-items:center}
+.threads-list{flex:1;overflow:auto;display:grid;gap:6px;padding-right:2px}
+.thread-item{position:relative;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 10px 10px 12px;cursor:pointer;transition:.2s;display:flex;flex-direction:column;gap:2px;group}
+.thread-item:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.12)}
+.thread-item.active{background:white;color:var(--g900);border-color:white;box-shadow:0 4px 16px rgba(255,255,255,0.12)}
+.thread-item.active .thread-meta{color:var(--muted)}
+.thread-title{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.thread-meta{font-size:10px;color:#8abfb0;display:flex;gap:6px;align-items:center;margin-top:2px}
+.thread-del{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:8px;border:none;background:rgba(0,0,0,0.15);color:#a7f3d0;display:grid;place-items:center;cursor:pointer;font-size:12px;opacity:0;transition:.2s}
+.thread-item:hover .thread-del{opacity:1}
+.thread-item.active .thread-del{background:rgba(10,61,46,0.08);color:var(--g900)}
+.thread-del:hover{background:#fee2e2 !important;color:#dc2626 !important}
+
+.bottom-nav{padding-top:8px;border-top:1px solid rgba(255,255,255,0.08);display:grid;gap:6px;margin-top:8px}
+.nav-btn{height:38px;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:12.5px;font-weight:500;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);color:#c8f0e3;cursor:pointer;transition:.2s;width:100%;text-align:left}
+.nav-btn:hover{background:rgba(255,255,255,0.1)}
+
+.side-foot{padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08)}
+.disclaimer-mini{background:rgba(22,160,133,0.12);border:1px solid rgba(22,160,133,0.15);border-radius:10px;padding:8px 10px;font-size:10px;line-height:1.4;color:#8abfb0}
+
+/* Main */
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.topbar{height:58px;background:rgba(255,255,255,0.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(10,61,46,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex-shrink:0}
+.topbar h2{font-family:'Fraunces';font-size:17px;color:var(--g900);font-weight:600;display:flex;align-items:center;gap:8px}
+.topbar h2 span{font-family:'Plus Jakarta Sans';font-size:12px;font-weight:500;color:var(--muted);background:var(--g50);padding:3px 8px;border-radius:100px;border:1px solid var(--g100)}
+.avatar-small{width:32px;height:32px;border-radius:10px;background:var(--g900);color:white;display:grid;place-items:center;font-weight:700;font-size:13px}
+
+/* Chat */
+.chat-wrap{flex:1;overflow:auto;padding:24px 20px 0;display:flex;flex-direction:column;gap:18px;scroll-behavior:smooth}
+.msg-row{display:flex;gap:12px;max-width:780px;width:100%;margin:0 auto}
+.msg-row.user{flex-direction:row-reverse}
+.bubble-avatar{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;flex:0 0 34px;font-weight:700;font-size:13px}
+.bubble-avatar.user{background:var(--g900);color:white}
+.bubble-avatar.assistant{background:white;border:1px solid var(--g100);color:var(--g800)}
+.bubble-content{max-width:min(640px, calc(100% - 48px));display:flex;flex-direction:column;gap:6px}
+.bubble{border-radius:18px;padding:16px 18px;font-size:14px;line-height:1.65;box-shadow:0 2px 12px rgba(10,61,46,0.05)}
+.bubble.user{background:var(--g900);color:white;border-bottom-right-radius:6px}
+.bubble.assistant{background:white;border:1px solid rgba(10,61,46,0.08);color:var(--ink);border-bottom-left-radius:6px;overflow:hidden}
+.meta{font-size:11px;color:var(--muted)}
+
+.struct-section{margin-bottom:14px}
+.struct-section:last-child{margin-bottom:0}
+.struct-h{font-family:'Fraunces';font-size:15px;font-weight:700;color:var(--g900);margin-bottom:8px;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
+.struct-h::before{content:'';width:3px;height:16px;background:var(--g600);border-radius:100px;display:inline-block;flex:0 0 3px}
+.struct-p{font-size:13.5px;line-height:1.6;color:var(--ink);margin-bottom:6px}
+.struct-list{display:grid;gap:6px;margin:6px 0 4px}
+.struct-item{display:flex;gap:8px;font-size:13.5px;line-height:1.5;align-items:flex-start}
+.struct-dot{width:6px;height:6px;border-radius:50%;background:var(--g600);margin-top:7px;flex:0 0 6px}
+.struct-item strong{font-weight:700;color:var(--g900)}
+.struct-important{background:#fff9e6;border:1px solid #ffecb3;border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.5;color:#665500;margin-top:10px}
+
+/* Medicine cards */
+.meds-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(270px,1fr));gap:12px;max-width:780px;width:100%;margin:0 auto}
+.med-card{background:white;border:1px solid #bfe9d9;border-radius:18px;padding:16px;box-shadow:0 4px 20px rgba(10,61,46,0.06)}
+.med-icon{width:40px;height:40px;border-radius:12px;background:var(--g900);color:white;display:grid;place-items:center;font-weight:800}
+.med-name{font-weight:700;font-size:14px;color:var(--g900);margin-top:10px}
+.med-grid{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.med-field{background:#f6fffd;border:1px solid #e0f2ec;border-radius:10px;padding:8px 10px}
+.med-field label{font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--g700);display:block}
+.med-field div{font-size:12px;font-weight:600;margin-top:2px;word-break:break-word}
+.med-prec{background:#fff9e6;border:1px solid #ffecb3;border-radius:10px;padding:10px;margin-top:10px;font-size:11.5px;line-height:1.5;color:#665500}
+.btn-schedule{margin-top:12px;width:100%;height:40px;border-radius:100px;border:none;background:var(--g900);color:white;font-weight:600;font-size:13px;cursor:pointer}
+
+/* Input */
+.input-bar{padding:14px 20px 20px;background:linear-gradient(180deg, rgba(246,255,253,0), rgba(255,255,255,0.95) 25%);backdrop-filter:blur(12px);border-top:1px solid rgba(10,61,46,0.06);flex-shrink:0}
+.input-inner{max-width:780px;margin:0 auto;background:white;border:1px solid rgba(10,61,46,0.1);border-radius:24px;box-shadow:0 6px 24px rgba(10,61,46,0.08);display:flex;align-items:flex-end;gap:8px;padding:8px 8px 8px 14px;transition:.2s}
+.input-inner:focus-within{border-color:var(--g600);box-shadow:0 0 0 4px rgba(22,160,133,0.1), 0 6px 24px rgba(10,61,46,0.08)}
+.textarea{flex:1;min-height:24px;max-height:120px;border:none;outline:none;resize:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;line-height:1.5;padding:8px 0;background:transparent}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:none;background:var(--g50);color:var(--g800);display:grid;place-items:center;cursor:pointer;transition:.2s;flex:0 0 40px}
+.icon-btn:hover{background:var(--g100)}
+.icon-btn.primary{background:var(--g900);color:white}
+.icon-btn.recording{background:#dc2626;color:white;animation:pulseRec 1.2s infinite}
+@keyframes pulseRec{0%{box-shadow:0 0 0 0 rgba(220,38,38,0.4)}70%{box-shadow:0 0 0 10px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
+.hint{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;max-width:780px;margin-left:auto;margin-right:auto}
+.hint-chip{background:white;border:1px solid rgba(10,61,46,0.1);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:500;cursor:pointer;transition:.2s;color:var(--g800)}
+.hint-chip:hover{background:var(--g50);border-color:var(--g100)}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(5,46,31,0.45);backdrop-filter:blur(8px);display:none;place-items:center;z-index:100;padding:20px}
+.modal.open{display:grid}
+.modal-card{width:min(520px,100%);background:white;border-radius:24px;box-shadow:0 24px 80px rgba(10,61,46,0.25);overflow:hidden;max-height:90vh;overflow:auto}
+.modal-head{padding:20px 22px;border-bottom:1px solid rgba(10,61,46,0.06);display:flex;justify-content:space-between;align-items:center}
+.modal-body{padding:20px 22px;display:grid;gap:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.label{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#137a59}
+.input{height:42px;border:1px solid rgba(10,61,46,0.12);border-radius:12px;padding:0 12px;font-size:13px;outline:none}
+.times-wrap{display:grid;gap:8px}
+.time-row{display:flex;gap:8px;align-items:center}
+.time-row input[type=time]{flex:1;height:36px;border:1px solid rgba(10,61,46,0.12);border-radius:10px;padding:0 8px}
+.btn-primary{height:44px;border-radius:100px;border:none;background:var(--g900);color:white;font-weight:600;cursor:pointer}
+
+@media(max-width:900px){
+  body{flex-direction:column}
+  .sidebar{width:100%;height:160px;flex-direction:row;overflow:hidden}
+  .side-nav{flex-direction:row;overflow:auto}
+  .threads-section{display:none}
+}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="side-top">
+    <div class="logo"><div class="mark">C</div> Care Companion</div>
+    <div class="side-profile">
+      <div class="avatar">{{ (profile.full_name[0] if profile and profile.full_name else 'U')|upper }}</div>
+      <div style="min-width:0;flex:1">
+        <div style="font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ profile.full_name if profile and profile.full_name else 'User' }}</div>
+        <div style="font-size:11px;color:#8abfb0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ profile.email if profile and profile.email else '' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="side-nav">
+    <button class="btn-new" onclick="newChat()">+ New Chat</button>
+
+    <div class="threads-section">
+      <div class="threads-header">
+        <span>Previous Chats</span>
+        <span id="threadCount" style="background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:100px;font-size:10px">{{ threads|length if threads else 0 }}</span>
+      </div>
+      <div class="threads-list" id="threadsList">
+        <!-- Threads loaded via JS -->
+        {% for t in threads %}
+        <div class="thread-item {% if t['id']==current_thread_id %}active{% endif %}" data-id="{{ t['id'] }}" onclick="openThread({{ t['id'] }})">
+          <div class="thread-title">{{ t['title'][:40] }}</div>
+          <div class="thread-meta">
+            <span>{{ t['updated_at'].split(' ')[0] if t['updated_at'] else '' }}</span>
+            <span>• {{ t['msg_count'] if t['msg_count'] is defined else '' }} msgs</span>
+          </div>
+          <button class="thread-del" onclick="event.stopPropagation(); deleteThread({{ t['id'] }})" title="Delete chat">🗑️</button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="/medications" class="nav-btn">💊 Medications</a>
+      <a href="/profile" class="nav-btn">👤 Profile</a>
+      <a href="/" class="nav-btn">🏠 Home</a>
+      <a href="/logout" class="nav-btn">🚪 Logout</a>
+    </div>
+  </div>
+  <div class="side-foot"><div class="disclaimer-mini">🌿 Health information only — not medical advice. Emergency? Call local emergency number.</div></div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <h2>Care Companion <span>{{ current_thread['title'][:30] if current_thread else 'New Chat' }}</span></h2>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="avatar-small">{{ (profile.full_name[0] if profile and profile.full_name else 'U')|upper }}</div>
+    </div>
+  </div>
+
+  <div class="chat-wrap" id="chatWrap">
+    <div class="msg-row" id="welcomeRow"><div class="bubble-avatar assistant">C</div><div class="bubble-content"><div class="bubble assistant">
+      <div class="struct-section"><div class="struct-h">Welcome</div><div class="struct-p">Hi <strong>{{ profile.full_name.split()[0] if profile and profile.full_name else 'there' }}! I'm your Care Companion</strong> — here to help you with clear health information.</div></div>
+      <div class="struct-section"><div class="struct-h">What I Can Help With</div><div class="struct-list">
+        <div class="struct-item"><div class="struct-dot"></div><div><strong>Understand symptoms</strong> and general health topics</div></div>
+        <div class="struct-item"><div class="struct-dot"></div><div><strong>Read prescriptions</strong> and explain medicines</div></div>
+        <div class="struct-item"><div class="struct-dot"></div><div><strong>Look at skin concerns</strong> and share general care tips</div></div>
+        <div class="struct-item"><div class="struct-dot"></div><div><strong>Speak in your language</strong></div></div>
+      </div></div>
+    </div><div class="meta">Just now</div></div></div>
+  </div>
+
+  <script id="history-data" type="application/json">{{ history_json | safe }}</script>
+  <script id="threads-data" type="application/json">{{ threads | tojson | safe }}</script>
+
+  <div class="input-bar">
+    <div class="input-inner">
+      <button class="icon-btn" id="attachBtn" title="Add files" type="button">📎</button>
+      <input type="file" id="fileInput" hidden accept="image/*,application/pdf">
+      <textarea id="queryInput" class="textarea" placeholder="Ask anything about your health..." rows="1"></textarea>
+      <button class="icon-btn" id="voiceBtn" title="Voice" type="button">🎤</button>
+      <button class="icon-btn primary" id="sendBtn" title="Send" type="button">➤</button>
+    </div>
+    <div class="hint" id="hintContainer">
+      <div class="hint-chip" data-hint="What are the symptoms of diabetes?">Diabetes symptoms</div>
+      <div class="hint-chip" data-hint="How should I take care of a small cut?">Cut care</div>
+      <div class="hint-chip" data-hint="What should I know about fever?">Fever info</div>
+      <div class="hint-chip" data-action="upload">Upload prescription</div>
+    </div>
+  </div>
+</div>
+
+<!-- Scheduler Modal -->
+<div class="modal" id="schedulerModal">
+  <div class="modal-card">
+    <div class="modal-head"><h3 style="font-family:Fraunces;color:var(--g900)">Add Reminder</h3><button onclick="closeModal()" style="width:36px;height:36px;border-radius:10px;border:1px solid #e5e7eb;background:white;cursor:pointer">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label class="label">Medicine Name</label><input class="input" id="m_name"></div>
+        <div class="field"><label class="label">Dosage</label><input class="input" id="m_dosage"></div>
+        <div class="field"><label class="label">Frequency</label><input class="input" id="m_freq"></div>
+        <div class="field"><label class="label">Duration</label><input class="input" id="m_duration"></div>
+      </div>
+      <div class="field"><label class="label">Instructions</label><input class="input" id="m_instructions"></div>
+      <div class="field"><label class="label">Precautions</label><input class="input" id="m_precautions"></div>
+      <div class="grid2">
+        <div class="field"><label class="label">Start Date</label><input class="input" id="m_start" type="date"></div>
+        <div class="field"><label class="label">End Date</label><input class="input" id="m_end" type="date"></div>
+      </div>
+      <div class="field">
+        <label class="label">Reminder Times — Email via SMTP</label>
+        <div class="times-wrap" id="timesWrap"></div>
+        <button type="button" onclick="addTimeRow()" style="margin-top:8px;background:var(--g50);border:1px dashed var(--g100);border-radius:10px;padding:8px 12px;font-size:12px;cursor:pointer">+ Add time</button>
+      </div>
+      <button class="btn-primary" onclick="saveSchedule()">Save & Email Card (SMTP → {{ profile.email if profile else 'profile email' }})</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentThreadId = {{ current_thread_id if current_thread_id else 'null' }};
+const chatWrap = document.getElementById('chatWrap');
+const queryInput = document.getElementById('queryInput');
+
+function scrollBottom(){ chatWrap.scrollTop = chatWrap.scrollHeight; }
+
+function fillHint(txt){
+  if(!queryInput) return;
+  queryInput.value = txt;
+  queryInput.focus();
+  // Trigger input event to resize
+  queryInput.dispatchEvent(new Event('input'));
+}
+
+if(queryInput){
+  queryInput.addEventListener('input', function(){ this.style.height='auto'; this.style.height=Math.min(this.scrollHeight,120)+'px'; });
+  queryInput.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendText(); }});
+}
+
+function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function formatStructured(raw){
+  if(!raw) return '';
+  let text = raw.replace(/\[Source[^\]]*\]/g, '').replace(/\(Source:[^\)]*\)/g, '');
+  const lines = text.split('\n');
+  let html = ''; let inList = false; let currentSection = '';
+  function flushList(){ if(inList){ html+=`</div>`; inList=false; } }
+  for(let line of lines){
+    line=line.trim(); if(!line) continue;
+    if(line.startsWith('###')){
+      flushList();
+      const title=line.replace(/^###\s*/,'').replace(/\*\*/g,'').trim();
+      html+=`<div class="struct-section"><div class="struct-h">${escapeHtml(title)}</div>`;
+      currentSection=title; continue;
+    }
+    if(line.startsWith('- ')||line.startsWith('* ')||line.startsWith('• ')){
+      let content=line.replace(/^[-*•]\s*/,'').trim();
+      content=escapeHtml(content).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+      if(!inList){ html+=`<div class="struct-list">`; inList=true; }
+      html+=`<div class="struct-item"><div class="struct-dot"></div><div>${content}</div></div>`; continue;
+    }
+    const para=escapeHtml(line).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+    if(!currentSection && !html.includes('struct-section')){
+      html+=`<div class="struct-section"><div class="struct-h">Summary</div><div class="struct-p">${para}</div></div>`;
+      currentSection='Summary';
+    } else {
+      html+=`<div class="struct-p">${para}</div>`;
+    }
+  }
+  flushList();
+  if(html.includes('struct-important') && !html.endsWith('</div></div>')) html+=`</div></div>`;
+  return html;
+}
+
+function addMessage(role, text, skipScroll){
+  const row=document.createElement('div'); row.className='msg-row '+(role==='user'?'user':'');
+  row.innerHTML=`<div class="bubble-avatar ${role==='user'?'user':'assistant'}">${role==='user'?'U':'C'}</div><div class="bubble-content"><div class="bubble ${role==='user'?'user':'assistant'}"></div><div class="meta">Just now</div></div>`;
+  const bubble=row.querySelector('.bubble');
+  if(role==='assistant') bubble.innerHTML=formatStructured(text);
+  else bubble.innerText=text;
+  chatWrap.appendChild(row);
+  if(!skipScroll) scrollBottom();
+}
+
+function addMedicineCards(medicines, generalNotes){
+  const grid=document.createElement('div'); grid.className='meds-grid';
+  medicines.forEach((med)=>{
+    const card=document.createElement('div'); card.className='med-card';
+    card.innerHTML=`
+      <div class="med-icon">${(med.name||'M')[0].toUpperCase()}</div>
+      <div class="med-name">${med.name||'Medicine'}</div>
+      <div class="med-grid">
+        <div class="med-field"><label>Dosage</label><div>${med.dosage||'-'}</div></div>
+        <div class="med-field"><label>Frequency</label><div>${med.frequency||'-'}</div></div>
+        <div class="med-field"><label>Duration</label><div>${med.duration||'-'}</div></div>
+        <div class="med-field"><label>Route</label><div>${med.route||'Oral'}</div></div>
+      </div>
+      ${med.instructions?`<div class="med-field" style="margin-top:8px"><label>Instructions</label><div>${med.instructions}</div></div>`:''}
+      <div class="med-prec"><strong>⚠️ Precautions:</strong> ${med.precautions||'Take as prescribed.'}</div>
+      <button class="btn-schedule" onclick='openScheduler(${JSON.stringify(med).replace(/'/g, "&#39;")})'>Add Reminder (Email via SMTP)</button>
+    `;
+    grid.appendChild(card);
+  });
+  chatWrap.appendChild(grid);
+  if(generalNotes){ addMessage('assistant', generalNotes, true); }
+  scrollBottom();
+}
+
+// --- Threads Logic ---
+function loadThreads(){
+  fetch('/api/threads').then(r=>r.json()).then(threads=>{
+    const list=document.getElementById('threadsList');
+    if(!threads.length){
+      list.innerHTML='<div style="font-size:11px;color:#8abfb0;padding:8px">No chats yet. Start a new chat!</div>';
+      return;
+    }
+    list.innerHTML=threads.map(t=>{
+      const active = t.id===currentThreadId ? 'active' : '';
+      const date = t.updated_at ? t.updated_at.split(' ')[0] : '';
+      const count = t.msg_count || '';
+      const title = (t.title||'New Chat').slice(0,38);
+      return `<div class="thread-item ${active}" data-id="${t.id}" onclick="openThread(${t.id})">
+        <div class="thread-title">${escapeHtml(title)}</div>
+        <div class="thread-meta"><span>${date}</span>${count ? `<span>• ${count} msgs</span>` : ''}</div>
+        <button class="thread-del" onclick="event.stopPropagation(); deleteThread(${t.id})" title="Delete">🗑️</button>
+      </div>`;
+    }).join('');
+    document.getElementById('threadCount').innerText = threads.length;
+  });
+}
+
+function openThread(id){
+  window.location.href = `/chat?thread_id=${id}`;
+}
+
+async function newChat(){
+  const res = await fetch('/api/threads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:'New Chat'})});
+  const data = await res.json();
+  if(data.id){
+    window.location.href = `/chat?thread_id=${data.id}`;
+  }
+}
+
+async function deleteThread(id){
+  if(!confirm('Delete this chat? All messages in this chat will be removed permanently.')) return;
+  const res = await fetch(`/api/threads/${id}`,{method:'DELETE'});
+  const data = await res.json();
+  if(data.success){
+    // If deleting current thread, go to latest or new
+    if(id===currentThreadId){
+      window.location.href = '/chat';
+    } else {
+      loadThreads();
+    }
+  } else {
+    alert('Could not delete: '+(data.error||'unknown'));
+  }
+}
+
+function renderHistory(){
+  try{
+    const el=document.getElementById('history-data');
+    if(!el) return;
+    const history=JSON.parse(el.textContent||'[]');
+    history.forEach(item=>{
+      const role=item.role; const msgType=item.message_type||'text'; const msg=item.message||'';
+      if(msgType==='medicine_cards'){
+        try{
+          const data=JSON.parse(msg);
+          if(data.medicines && data.medicines.length){
+            addMedicineCards(data.medicines, data.general_notes||'', true);
+          }
+        }catch(e){ addMessage(role, msg.slice(0,1000), true); }
+      } else {
+        addMessage(role, msg, true);
+      }
+    });
+    scrollBottom();
+  }catch(e){ console.error('History render error',e); }
+}
+
+// --- Chat actions ---
+async function sendText(){
+  const q=queryInput.value.trim(); if(!q) return;
+  addMessage('user', q); queryInput.value=''; queryInput.style.height='auto';
+  const typingId='typing-'+Date.now(); const typingRow=document.createElement('div'); typingRow.className='msg-row'; typingRow.id=typingId;
+  typingRow.innerHTML=`<div class="bubble-avatar assistant">C</div><div class="bubble-content"><div class="bubble assistant" style="color:#6b7f79;font-style:italic">Thinking...</div></div>`;
+  chatWrap.appendChild(typingRow); scrollBottom();
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:q, thread_id: currentThreadId})});
+    const data=await res.json();
+    document.getElementById(typingId)?.remove();
+    if(data.error){ addMessage('assistant','Sorry, error. Try again.'); return; }
+    // Update current thread if new title was set, and refresh threads list
+    if(data.thread_id) currentThreadId = data.thread_id;
+    addMessage('assistant', data.response);
+    loadThreads();
+  }catch(e){ document.getElementById(typingId)?.remove(); addMessage('assistant','Network error.'); }
+}
+
+async function handleFile(file){
+  if(!file) return;
+  const choice = prompt("What is this? Type 'prescription' or 'skin':", "prescription");
+  if(!choice) return;
+  const formData=new FormData(); formData.append('file', file); formData.append('thread_id', currentThreadId);
+  const extraQuery = prompt("Add a note (optional):", "");
+  if(extraQuery) formData.append('query', extraQuery);
+  addMessage('user', `Uploaded ${file.name}`);
+  const typingRow=document.createElement('div'); typingRow.className='msg-row';
+  typingRow.innerHTML=`<div class="bubble-avatar assistant">C</div><div class="bubble-content"><div class="bubble assistant" style="color:#6b7f79;font-style:italic">Looking at your file...</div></div>`;
+  chatWrap.appendChild(typingRow); scrollBottom();
+  try{
+    const endpoint = choice.toLowerCase().includes('skin') ? '/api/upload-skin-image' : '/api/upload-prescription';
+    const res=await fetch(endpoint,{method:'POST', body:formData});
+    const data=await res.json(); typingRow.remove();
+    if(data.error){ addMessage('assistant','Could not read file. Try clearer image.'); return; }
+    if(endpoint.includes('prescription')){
+      if(data.medicines && data.medicines.length){ addMedicineCards(data.medicines, data.general_notes||''); }
+      else { addMessage('assistant', (data.raw_response||'').slice(0,1000)); }
+    } else {
+      addMessage('assistant', data.response);
+    }
+    loadThreads();
+  }catch(e){ typingRow.remove(); addMessage('assistant','Upload failed.'); }
+}
+
+let mediaRecorder=null, audioChunks=[], isRecording=false;
+const voiceBtn=document.getElementById('voiceBtn');
+async function startVoice(){
+  if(isRecording){ stopVoice(); return; }
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRecorder=new MediaRecorder(stream); audioChunks=[];
+    mediaRecorder.ondataavailable=e=>{ if(e.data.size>0) audioChunks.push(e.data); };
+    mediaRecorder.onstop=async()=>{
+      const blob=new Blob(audioChunks,{type:'audio/webm'});
+      await sendVoice(blob);
+      stream.getTracks().forEach(t=>t.stop());
+    };
+    mediaRecorder.start(); isRecording=true;
+    voiceBtn.classList.add('recording'); voiceBtn.textContent='⏹️';
+    addMessage('assistant','Listening...');
+  }catch(e){ alert('Microphone access needed.'); }
+}
+function stopVoice(){ if(mediaRecorder && isRecording){ mediaRecorder.stop(); isRecording=false; voiceBtn.classList.remove('recording'); voiceBtn.textContent='🎤'; } }
+voiceBtn.addEventListener('click', startVoice);
+async function sendVoice(blob){
+  const form=new FormData(); form.append('audio', blob, 'voice.webm'); form.append('thread_id', currentThreadId);
+  addMessage('user','Voice message');
+  try{
+    const res=await fetch('/api/voice-to-text',{method:'POST', body:form});
+    const data=await res.json();
+    if(data.error){ addMessage('assistant','Could not understand voice. Try typing.'); return; }
+    addMessage('assistant', data.response);
+    loadThreads();
+  }catch(e){ addMessage('assistant','Voice failed.'); }
+}
+
+// Scheduler
+function openScheduler(med){
+  document.getElementById('m_name').value=med.name||'';
+  document.getElementById('m_dosage').value=med.dosage||'';
+  document.getElementById('m_freq').value=med.frequency||'';
+  document.getElementById('m_duration').value=med.duration||'';
+  document.getElementById('m_instructions').value=med.instructions||'';
+  document.getElementById('m_precautions').value=med.precautions||'';
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('m_start').value=today;
+  const freq=(med.frequency||'').toLowerCase();
+  let count=1;
+  if(freq.includes('twice')||freq.includes('2')||freq.includes('1-0-1')) count=2;
+  if(freq.includes('thrice')||freq.includes('3')||freq.includes('1-1-1')) count=3;
+  const wrap=document.getElementById('timesWrap'); wrap.innerHTML='';
+  for(let i=0;i<count;i++) addTimeRow();
+  document.getElementById('schedulerModal').classList.add('open');
+}
+function closeModal(){ document.getElementById('schedulerModal').classList.remove('open'); }
+function addTimeRow(val){
+  const wrap=document.getElementById('timesWrap');
+  const defaults=['08:00','14:00','20:00','22:00'];
+  const row=document.createElement('div'); row.className='time-row';
+  const input=document.createElement('input'); input.type='time'; input.value=val||defaults[wrap.children.length % defaults.length];
+  const del=document.createElement('button'); del.textContent='✕'; del.style.cssText='width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;background:white;cursor:pointer';
+  del.onclick=()=>row.remove();
+  row.append(input, del); wrap.appendChild(row);
+}
+async function saveSchedule(){
+  const times=[...document.getElementById('timesWrap').querySelectorAll('input[type=time]')].map(i=>i.value).filter(Boolean);
+  if(!times.length){ alert('Add at least one time'); return; }
+  const payload={
+    medicine_name:document.getElementById('m_name').value,
+    dosage:document.getElementById('m_dosage').value,
+    frequency:document.getElementById('m_freq').value,
+    duration:document.getElementById('m_duration').value,
+    instructions:document.getElementById('m_instructions').value,
+    precautions:document.getElementById('m_precautions').value,
+    start_date:document.getElementById('m_start').value,
+    end_date:document.getElementById('m_end').value,
+    times:times
+  };
+  const btn=document.querySelector('#schedulerModal .btn-primary');
+  const orig=btn.innerText; btn.innerText='Saving & Emailing...'; btn.disabled=true;
+  try{
+    const res=await fetch('/api/scheduler',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data=await res.json();
+    btn.innerText=orig; btn.disabled=false;
+    if(data.success){
+      alert(`✅ Saved! Medication card emailed to ${data.email_sent_to||'your profile email'} at ${times.join(', ')}`);
+      addMessage('assistant', `### Schedule Created ✅\nReminder for **${payload.medicine_name}** saved.\n\n### Email Sent\n- Card sent to **${data.email_sent_to||'profile email'}** via SMTP\n- Times: **${times.join(', ')}**\n\n### Next Steps\n- You will get daily emails at these times\n- Manage in Medications page`);
+      closeModal();
+    } else alert('Could not save: '+(data.error||'unknown'));
+  }catch(e){ btn.innerText=orig; btn.disabled=false; alert('Error: '+e.message); }
+}
+
+function bindUI(){
+  const attachBtn=document.getElementById('attachBtn');
+  const fileInput=document.getElementById('fileInput');
+  const sendBtn=document.getElementById('sendBtn');
+  const hintContainer=document.getElementById('hintContainer');
+  if(attachBtn && fileInput){
+    attachBtn.addEventListener('click', (e)=>{ e.preventDefault(); fileInput.click(); });
+  }
+  if(fileInput){
+    fileInput.addEventListener('change', (e)=>{
+      const file=e.target.files[0];
+      if(file) handleFile(file);
+      e.target.value='';
+    });
+  }
+  if(sendBtn){
+    sendBtn.addEventListener('click', (e)=>{ e.preventDefault(); sendText(); });
+  }
+  if(hintContainer){
+    hintContainer.addEventListener('click', (e)=>{
+      const chip=e.target.closest('.hint-chip');
+      if(!chip) return;
+      const action=chip.getAttribute('data-action');
+      if(action==='upload'){
+        const fi=document.getElementById('fileInput');
+        if(fi) fi.click();
+      } else {
+        const hint=chip.getAttribute('data-hint');
+        if(hint){
+          const q=document.getElementById('queryInput');
+          if(q){ q.value=hint; q.focus(); q.dispatchEvent(new Event('input')); }
+        }
+      }
+    });
+  }
+}
+
+loadThreads();
+renderHistory();
+bindUI();
+document.addEventListener('DOMContentLoaded', bindUI);
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2372842ad4fcc8c',t:'MTc4NTQ0MzgwNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

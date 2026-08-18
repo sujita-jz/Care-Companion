@@ -1,0 +1,72 @@
+{
+  "The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf": {
+    "hash": "53c0dd111a671875ab3e962d48af721a",
+    "chunks": 4158,
+    "last_ingested": "1784654902.2259183"
+  },
+  "common_conditions/asthma_guidance.pdf": {
+    "hash": "30f6801b8128ab830920f9cdd005fefa",
+    "chunks": 1,
+    "last_ingested": "1785429584.5754457"
+  },
+  "common_conditions/diabetes_awareness.pdf": {
+    "hash": "d71c6f01f8cb7d2950cf49ecddb5ae86",
+    "chunks": 1,
+    "last_ingested": "1785429584.5574455"
+  },
+  "common_conditions/fever_and_child_fever_guidance.pdf": {
+    "hash": "6960e8486d0413f54b3d9f8ab5ef266b",
+    "chunks": 2,
+    "last_ingested": "1785429584.5474453"
+  },
+  "common_conditions/hypertension_awareness.pdf": {
+    "hash": "81f23b114a4957a41e42be21601d744d",
+    "chunks": 1,
+    "last_ingested": "1785429584.5664456"
+  },
+  "emergency/emergency_warning_signs.pdf": {
+    "hash": "612edc1be3fdc41561c6f799e7af0e66",
+    "chunks": 2,
+    "last_ingested": "1785429584.5384452"
+  },
+  "medication/antibiotic_awareness.pdf": {
+    "hash": "d553a2e06fc26e53e5ab287f1033c3d9",
+    "chunks": 1,
+    "last_ingested": "1785429584.6054459"
+  },
+  "medication/medication_safety.pdf": {
+    "hash": "7e695e3ae5d6ca5fee75e095b49c5e88",
+    "chunks": 1,
+    "last_ingested": "1785429584.5864458"
+  },
+  "medication/missed_dose_guidance.pdf": {
+    "hash": "6e841d78283741003712eacfa04c4785",
+    "chunks": 1,
+    "last_ingested": "1785429584.5964458"
+  },
+  "prevention/dehydration_and_ors_guidance.pdf": {
+    "hash": "17e7f4f653294c5c6b8a5ccb4f78cf15",
+    "chunks": 1,
+    "last_ingested": "1785429584.614446"
+  },
+  "prevention/nutrition_basics.pdf": {
+    "hash": "3066c20846ca2db13ab7d377ccb8c5e7",
+    "chunks": 1,
+    "last_ingested": "1785429584.622446"
+  },
+  "sources/OFFICIAL_SOURCE_LINKS.md": {
+    "hash": "10ba0bc53cc2f8796ff4a485bfb5380e",
+    "chunks": 2,
+    "last_ingested": "1785429476.6437166"
+  },
+  "special_groups/elderly_medication_safety.pdf": {
+    "hash": "a5a6e17673c1f9333b84cdcda7447dc3",
+    "chunks": 1,
+    "last_ingested": "1785429584.6394463"
+  },
+  "special_groups/pregnancy_general_care.pdf": {
+    "hash": "5c54ccd25b7372ec75b92e7bad535ac6",
+    "chunks": 1,
+    "last_ingested": "1785429584.6304462"
+  }
+}

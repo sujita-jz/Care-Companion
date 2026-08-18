@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Care Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Fraunces:wght@600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --g900: #0a3d2e;
+            --g700: #137a59;
+            --g600: #16a085;
+            --g50: #e8f8f3;
+            --mint: #f6fffd
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--mint);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(60% 80% at 20% 20%, rgba(22, 160, 133, 0.18), transparent 60%), radial-gradient(50% 60% at 80% 20%, rgba(86, 200, 156, 0.18), transparent 60%), linear-gradient(180deg, #f6fffd, #e8f8f3)
+        }
+
+        .card {
+            width: min(440px, 100%);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 28px;
+            padding: 36px 32px;
+            box-shadow: 0 20px 60px rgba(10, 61, 46, 0.12)
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px
+        }
+
+        .mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a3d2e, #16a085);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-family: 'Fraunces';
+            font-weight: 700
+        }
+
+        h1 {
+            font-family: 'Fraunces';
+            font-size: 28px;
+            letter-spacing: -0.02em;
+            color: var(--g900)
+        }
+
+        .sub {
+            margin-top: 6px;
+            color: #5b7c72;
+            font-size: 14px;
+            line-height: 1.5
+        }
+
+        .field {
+            margin-top: 18px
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--g700);
+            margin-bottom: 6px;
+            display: block
+        }
+
+        .input {
+            width: 100%;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(10, 61, 46, 0.12);
+            background: white;
+            padding: 0 14px;
+            font-size: 14px;
+            outline: none;
+            transition: .2s
+        }
+
+        .input:focus {
+            border-color: var(--g600);
+            box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.15)
+        }
+
+        .btn {
+            width: 100%;
+            height: 48px;
+            border-radius: 100px;
+            border: none;
+            background: var(--g900);
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 22px;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(10, 61, 46, 0.25)
+        }
+
+        .foot {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 13px;
+            color: #5b7c72
+        }
+
+        .foot a {
+            color: var(--g700);
+            font-weight: 700;
+            text-decoration: none
+        }
+
+        .error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-top: 12px
+        }
+
+        .bubbles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(22, 160, 133, 0.25), rgba(22, 160, 133, 0.05));
+            filter: blur(0.5px);
+            animation: float 12s infinite ease-in-out
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1)
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05)
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="bubbles">
+    <div class="bubble" style="width:220px;height:220px;left:10%;top:15%"></div>
+    <div class="bubble" style="width:320px;height:320px;right:8%;bottom:12%;animation-delay:2s"></div>
+    <div class="bubble" style="width:140px;height:140px;left:40%;bottom:20%;animation-delay:4s"></div>
+</div>
+<div class="card">
+    <div class="logo">
+        <div class="mark">C</div>
+        <div style="font-weight:800;color:#0a3d2e">Care <span style="color:#16a085;font-weight:400">Companion</span>
+        </div>
+    </div>
+    <h1>Welcome back</h1>
+    <div class="sub">Log in to your secure Care Companion workspace. Multimodal • multilingual • safety guarded.</div>
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="error">{{ messages[0] }}</div>
+    {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <div class="field"><label class="label">Username or Email</label><input class="input" name="username"
+                                                                                placeholder="e.g. aarav123 or aarav@email.com"
+                                                                                required></div>
+        <div class="field"><label class="label">Password</label><input class="input" type="password" name="password"
+                                                                       placeholder="••••••••" required></div>
+        <button class="btn" type="submit">Log in →</button>
+    </form>
+    <div class="foot">New here? <a href="/register">Create account</a> • <a href="/">Back to home</a></div>
+    <div style="margin-top:16px;background:#f0faf7;border:1px solid #bfe9d9;border-radius:12px;padding:10px 12px;font-size:11px;color:#0f5d44">
+        🔒 SQLite Auth + Chat history private to you. Profile language drives response language.
+    </div>
+</div>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'a2365d8cad91f4b7',t:'MTc4NTQzNTUwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
+</html>

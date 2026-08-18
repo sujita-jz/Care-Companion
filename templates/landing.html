@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Companion - Your Intelligent Healthcare Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap"
+          rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --green-950: #052e1f;
+            --green-900: #0a3d2e;
+            --green-800: #0f5d44;
+            --green-700: #137a59;
+            --green-600: #16a085;
+            --green-500: #1abc9c;
+            --green-400: #48c9b0;
+            --green-300: #82e0c7;
+            --green-200: #a9e9d7;
+            --green-100: #d1f2e8;
+            --green-50: #e8f8f3;
+            --mint: #f6fffd;
+            --ink: #0b1f18;
+            --muted: #5b7c72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--mint);
+            color: var(--ink);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', serif;
+            letter-spacing: -0.02em
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        /* Canvas BG */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            opacity: 0.9
+        }
+
+        .gradient-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(60% 80% at 20% 20%, rgba(22, 160, 133, 0.25), transparent 60%),
+            radial-gradient(50% 60% at 80% 20%, rgba(86, 200, 156, 0.25), transparent 60%),
+            radial-gradient(70% 70% at 50% 90%, rgba(10, 61, 46, 0.15), transparent 70%);
+            filter: blur(20px);
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1120px, calc(100% - 32px));
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 18px 0 20px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 100px;
+            box-shadow: 0 8px 32px rgba(10, 61, 46, 0.08), 0 1px 2px rgba(10, 61, 46, 0.04);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: -0.02em
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--green-900), var(--green-600));
+            display: grid;
+            place-items: center;
+            color: white;
+            font-family: 'Fraunces';
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(22, 160, 133, 0.35);
+        }
+
+        .logo-text {
+            font-size: 18px;
+            color: var(--green-900)
+        }
+
+        .logo-text span {
+            color: var(--green-600);
+            font-weight: 400
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+            opacity: 0.7;
+            transition: .2s
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--green-800)
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .btn {
+            height: 40px;
+            padding: 0 18px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: .3s cubic-bezier(.2, .8, .2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--green-900)
+        }
+
+        .btn-primary {
+            background: var(--green-900);
+            color: white;
+            box-shadow: 0 4px 16px rgba(10, 61, 46, 0.2)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(10, 61, 46, 0.25);
+            background: #0e4d3a
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 24px 80px;
+            position: relative;
+        }
+
+        .hero-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns:1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(42px, 6vw, 78px);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            color: var(--green-950);
+        }
+
+        .hero-copy h1 .accent {
+            color: transparent;
+            background: linear-gradient(135deg, var(--green-700), var(--green-400));
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .hero-copy p {
+            margin-top: 22px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--muted);
+            max-width: 520px
+        }
+
+        .hero-actions {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn-xl {
+            height: 52px;
+            padding: 0 28px;
+            font-size: 16px;
+            border-radius: 100px
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--green-800);
+            box-shadow: 0 2px 12px rgba(10, 61, 46, 0.06);
+            margin-bottom: 18px
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green-600);
+            box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.15);
+            animation: pulse 2s infinite
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.2)
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(22, 160, 133, 0.07)
+            }
+            100% {
+                box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.2)
+            }
+        }
+
+        /* Hero Visual - floating glass cards */
+        .hero-visual {
+            position: relative;
+            height: 560px
+        }
+
+        .blob {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(60% 60% at 50% 50%, rgba(22, 160, 133, 0.25), rgba(22, 160, 133, 0.02));
+            filter: blur(40px);
+            border-radius: 50%;
+            transform: scale(0.9)
+        }
+
+        .glass-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(10, 61, 46, 0.12), 0 1px 2px rgba(10, 61, 46, 0.04);
+            padding: 18px;
+        }
+
+        .card-main {
+            left: 8%;
+            top: 10%;
+            width: 84%;
+            z-index: 3;
+            padding: 22px
+        }
+
+        .card-prescription {
+            left: -8%;
+            bottom: 18%;
+            width: 62%;
+            z-index: 2;
+            transform: rotate(-3deg)
+        }
+
+        .card-skin {
+            right: -6%;
+            bottom: 4%;
+            width: 58%;
+            z-index: 4;
+            transform: rotate(4deg)
+        }
+
+        .chat-bubble {
+            border-radius: 18px;
+            padding: 12px 14px;
+            background: white;
+            margin-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04)
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background: var(--green-900);
+            color: white;
+            border-bottom-right-radius: 6px
+        }
+
+        .chat-bubble.assistant {
+            background: #f6fffd;
+            border: 1px solid var(--green-100);
+            border-bottom-left-radius: 6px
+        }
+
+        .med-card-mini {
+            border-radius: 14px;
+            background: linear-gradient(135deg, #f0faf7, #e8f8f3);
+            border: 1px solid #bfe9d9;
+            padding: 12px;
+            display: flex;
+            gap: 10px
+        }
+
+        .med-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--green-900);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 700
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 24px;
+            position: relative
+        }
+
+        .section-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto
+        }
+
+        .kicker {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--green-700)
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 0.95;
+            margin-top: 12px;
+            color: var(--green-950)
+        }
+
+        .section-desc {
+            margin-top: 16px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--muted);
+            max-width: 560px
+        }
+
+        /* Features grid */
+        .features {
+            display: grid;
+            grid-template-columns:repeat(12, 1fr);
+            gap: 18px;
+            margin-top: 48px
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(10, 61, 46, 0.06);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(10, 61, 46, 0.06);
+            transition: .4s cubic-bezier(.2, .8, .2, 1);
+            position: relative;
+            overflow: hidden
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(10, 61, 46, 0.12)
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(80% 80% at 0% 0%, rgba(22, 160, 133, 0.12), transparent 60%);
+            pointer-events: none
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--green-50);
+            color: var(--green-800);
+            font-size: 20px;
+            margin-bottom: 18px
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 8px
+        }
+
+        .feature p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted)
+        }
+
+        .feat-span-7 {
+            grid-column: span 7
+        }
+
+        .feat-span-5 {
+            grid-column: span 5
+        }
+
+        .feat-span-6 {
+            grid-column: span 6
+        }
+
+        .feat-span-4 {
+            grid-column: span 4
+        }
+
+        .feat-span-8 {
+            grid-column: span 8
+        }
+
+        .feat-span-12 {
+            grid-column: span 12
+        }
+
+        /* How it works - horizontal scroll illusion */
+        .how {
+            display: flex;
+            gap: 18px;
+            margin-top: 48px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none
+        }
+
+        .how::-webkit-scrollbar {
+            display: none
+        }
+
+        .step {
+            min-width: 320px;
+            flex: 0 0 320px;
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(10, 61, 46, 0.06);
+            box-shadow: 0 8px 32px rgba(10, 61, 46, 0.06)
+        }
+
+        .step-num {
+            font-family: 'Fraunces';
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--green-200)
+        }
+
+        .step h4 {
+            margin-top: 12px;
+            font-size: 18px
+        }
+
+        .step p {
+            margin-top: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--muted)
+        }
+
+        /* Safety */
+        .safety {
+            background: linear-gradient(180deg, var(--green-900) 0%, #061e16 100%);
+            color: #c8f0e3;
+            border-radius: 40px;
+            margin: 40px 24px;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .safety::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            right: -100px;
+            top: -100px;
+            background: radial-gradient(circle, rgba(22, 160, 133, 0.3), transparent 70%);
+            filter: blur(20px)
+        }
+
+        .safety-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 1
+        }
+
+        .safety h2 {
+            color: white;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1
+        }
+
+        .safety p {
+            color: #8abfb0;
+            margin-top: 14px;
+            line-height: 1.6
+        }
+
+        .safety-list {
+            margin-top: 24px;
+            display: grid;
+            gap: 12px
+        }
+
+        .safety-item {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 16px;
+            border-radius: 16px
+        }
+
+        .safety-item span {
+            color: var(--green-300)
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 24px;
+            border-top: 1px solid rgba(10, 61, 46, 0.06);
+            background: rgba(255, 255, 255, 0.6)
+        }
+
+        .foot-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns:1fr
+            }
+
+            .hero-visual {
+                height: 460px;
+                order: -1
+            }
+
+            .features .feature {
+                grid-column: span 12 !important
+            }
+
+            .safety-inner {
+                grid-template-columns:1fr
+            }
+
+            .nav-links {
+                display: none
+            }
+        }
+
+        /* Cursor follower */
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--green-600);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+            opacity: 0.7
+        }
+
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(22, 160, 133, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform .15s ease-out
+        }
+
+        /* Marquee */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid rgba(10, 61, 46, 0.06);
+            border-bottom: 1px solid rgba(10, 61, 46, 0.06);
+            background: white;
+            padding: 14px 0
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 28s linear infinite;
+            gap: 32px
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--green-900);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0)
+            }
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* Noise */
+        .noise::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 999
+        }
+    </style>
+</head>
+<body class="noise">
+<canvas id="bg-canvas"></canvas>
+<div class="gradient-mesh"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="nav" id="nav">
+    <div class="logo">
+        <div class="logo-mark">C</div>
+        <div class="logo-text">Care <span>Companion</span></div>
+    </div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#safety">Safety</a>
+    </div>
+    <div class="nav-cta">
+        <a href="/login" class="btn btn-ghost">Log in</a>
+        <a href="/register" class="btn btn-primary">Start — it's free</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <div class="pill"><span class="dot"></span> MULTIMODAL • MULTILINGUAL • SECURE</div>
+            <h1 id="heroTitle">Healthcare<br>that truly<br><span class="accent">listens to you</span></h1>
+            <p id="heroDesc">Meet Care Companion — an August AI inspired assistant that understands text, voice,
+                prescriptions & skin images. Knowledge-base verified, safety-guarded, and in your language.</p>
+            <div class="hero-actions" id="heroActions">
+                <a href="/register" class="btn btn-primary btn-xl">✨ Create your health profile →</a>
+                <a href="#features" class="btn btn-ghost btn-xl">See how it works</a>
+            </div>
+            <div style="margin-top:18px;display:flex;gap:18px;align-items:center;font-size:12px;color:var(--muted)">
+                <span>✓ No credit card</span><span>✓ Private & encrypted</span><span>✓ 11 languages</span>
+            </div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+            <div class="blob" id="blob"></div>
+            <div class="glass-card card-main" id="cardMain">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                    <strong style="font-size:13px;letter-spacing:0.06em;color:var(--green-800)">CHAT PREVIEW</strong>
+                    <span style="font-size:11px;background:var(--green-100);padding:4px 8px;border-radius:100px;color:var(--green-800)">Live • Knowledge Verified</span>
+                </div>
+                <div class="chat-bubble assistant">Hi Aarav! I see you uploaded a prescription. Let me extract the
+                    medicines for you...
+                </div>
+                <div class="med-card-mini">
+                    <div class="med-icon">A</div>
+                    <div>
+                        <div style="font-weight:700;font-size:13px">Amoxicillin 500mg</div>
+                        <div style="font-size:11px;color:var(--muted)">Twice daily • 5 days • After food</div>
+                    </div>
+                </div>
+                <div class="chat-bubble user">What precautions for this rash image?</div>
+                <div class="chat-bubble assistant" style="font-size:12px">From image: mild contact dermatitis possible.
+                    Keep clean, avoid scratching, moisturize. See derm if spreading...
+                </div>
+            </div>
+            <div class="glass-card card-prescription" id="cardPres">
+                <div style="font-size:12px;font-weight:700;color:var(--green-800);display:flex;align-items:center;gap:6px">
+                    📄 Prescription • Parsed
+                </div>
+                <div style="margin-top:10px;background:white;border-radius:12px;padding:10px;font-size:11px;line-height:1.4;box-shadow:inset 0 1px 2px rgba(0,0,0,0.04)">
+                    Tab. Cetirizine 10mg<br>1-0-1 • 3 days<br><span style="color:var(--muted)">Take after food, avoid driving if drowsy</span>
+                </div>
+                <div style="margin-top:10px;display:flex;gap:8px"><span
+                        style="background:var(--green-900);color:white;border-radius:100px;padding:6px 10px;font-size:10px;font-weight:700">Add to Scheduler</span><span
+                        style="background:var(--green-100);color:var(--green-800);border-radius:100px;padding:6px 10px;font-size:10px">Verified in KB</span>
+                </div>
+            </div>
+            <div class="glass-card card-skin" id="cardSkin">
+                <div style="font-size:12px;font-weight:700">🔍 Skin Image • Analysis</div>
+                <div style="margin-top:8px;width:100%;height:84px;border-radius:12px;background:linear-gradient(135deg,#fde6e1,#f9d8d0);display:grid;place-items:center;font-size:22px">
+                    🩹
+                </div>
+                <div style="margin-top:8px;font-size:11px;color:var(--muted)">General info only. Not a diagnosis.
+                    Monitor for infection signs.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="marquee">
+    <div class="marquee-track">
+        <div class="marquee-item">● RAG DIRECTORY: knowledge_base/ PDFs + SUBDIRS</div>
+        <div class="marquee-item">● TEXT • IMAGE • VOICE • PDF • RAG</div>
+        <div class="marquee-item">● PRESCRIPTION PARSER</div>
+        <div class="marquee-item">● SKIN ANALYSIS</div>
+        <div class="marquee-item">● MEDICATION SCHEDULER + EMAIL</div>
+        <div class="marquee-item">● KNOWLEDGE-BASE VERIFIED + CITATIONS</div>
+        <div class="marquee-item">● SAFETY GUARDRAILS</div>
+        <div class="marquee-item">● 11 LANGUAGES</div>
+        <div class="marquee-item">● CHROMADB • RAG • FLASK • GEMINI 1.5 FLASH • WHISPER</div>
+        <div class="marquee-item">● RAG DIRECTORY: knowledge_base/ PDFs + SUBDIRS</div>
+        <div class="marquee-item">● TEXT • IMAGE • VOICE • PDF • RAG</div>
+        <div class="marquee-item">● PRESCRIPTION PARSER</div>
+        <div class="marquee-item">● SKIN ANALYSIS</div>
+        <div class="marquee-item">● MEDICATION SCHEDULER + EMAIL</div>
+        <div class="marquee-item">● KNOWLEDGE-BASE VERIFIED + CITATIONS</div>
+        <div class="marquee-item">● SAFETY GUARDRAILS</div>
+    </div>
+</div>
+
+<section class="section" id="features">
+    <div class="section-inner">
+        <div class="kicker" id="featKicker">Built like August AI — but yours</div>
+        <h2 class="section-title" id="featTitle">Multimodal intake, <br>verified answers, <br><span
+                style="color:var(--green-600);font-style:italic;font-weight:500">gentle care.</span></h2>
+        <p class="section-desc" id="featDesc">Type, speak in any language, or upload a prescription or skin photo. Care
+            Companion checks every answer against its ChromaDB knowledge base before using Gemini — so it never
+            hallucinates.</p>
+
+        <div class="features">
+            <div class="feature feat-span-7" id="f1">
+                <div class="feature-icon">📚</div>
+                <h3>RAG over PDF Directory (NEW)</h3>
+                <p><b>Directory:</b> <span
+                        style="font-family:monospace;background:#e8f8f3;padding:2px 6px;border-radius:6px">knowledge_base/</span>
+                    reads whole directory + subdirectories. Add PDFs, TXT, MD anywhere. Auto-chunked 1000 chars / 150
+                    overlap with source + page metadata. Retrieved via ChromaDB, citations like (Source:
+                    fever_management.pdf p.1). LLM generates grounded answer using RAG.</p>
+                <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                    <span style="background:#fef9e7;border:1px solid #fde68a;padding:6px 10px;border-radius:100px;font-size:11px">📁 Recursive Scan</span><span
+                        style="background:var(--green-50);border:1px solid var(--green-100);padding:6px 10px;border-radius:100px;font-size:11px">Chunk 1000/150</span><span
+                        style="background:#f0f9ff;padding:6px 10px;border-radius:100px;font-size:11px;border:1px solid #bae6fd">Citations</span><span
+                        style="background:#fff8e1;border:1px solid #ffe082;padding:6px 10px;border-radius:100px;font-size:11px">RAG Grounded</span>
+                </div>
+            </div>
+            <div class="feature feat-span-5" id="f2">
+                <div class="feature-icon">💬</div>
+                <h3>Text + RAG Verification</h3>
+                <p>Every answer first searches RAG directory (ChromaDB). Retrieves top 5 relevant chunks with source
+                    citations. If relevant, Gemini uses ONLY those chunks. If not, fallback to general safe info.
+                    Prevents hallucination.</p>
+                <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+                    <span style="background:var(--green-50);border:1px solid var(--green-100);padding:6px 10px;border-radius:100px;font-size:11px">SQLite Auth</span><span
+                        style="background:#fef9e7;border:1px solid #fde68a;padding:6px 10px;border-radius:100px;font-size:11px">ChromaDB RAG</span><span
+                        style="background:#f0f9ff;padding:6px 10px;border-radius:100px;font-size:11px;border:1px solid #bae6fd">Gemini Vision</span>
+                </div>
+            </div>
+            <div class="feature feat-span-5" id="f2b">
+                <div class="feature-icon">🎤</div>
+                <h3>Voice in your language</h3>
+                <p>Faster Whisper Large-v3 transcribes your voice. Responds in the language you picked in profile —
+                    Hindi, Marathi, Spanish, Tamil, Telugu & 6 more. RAG still used for voice queries.</p>
+            </div>
+            <div class="feature feat-span-5" id="f3">
+                <div class="feature-icon">📸</div>
+                <h3>Prescription Parser</h3>
+                <p>Upload image or PDF. Extracts Medicine name, Dosage, Frequency, Duration, Route, Instructions + auto
+                    precaution. Then one-click add to scheduler with email reminders.</p>
+            </div>
+            <div class="feature feat-span-7" id="f4">
+                <div class="feature-icon">🩺</div>
+                <h3>Skin & wound assist</h3>
+                <p>Upload cut, rash, acne, burn. Gives general observation, possible similar conditions
+                    (non-definitive), self-care, red flags for doctor visit. August AI style guardrails baked in.</p>
+                <div style="margin-top:12px;background:var(--green-900);color:#a7f3d0;border-radius:12px;padding:10px 12px;font-size:11px">
+                    ⚠️ This is general information only, not a diagnosis. Encourages seeing dermatologist.
+                </div>
+            </div>
+            <div class="feature feat-span-4" id="f5">
+                <div class="feature-icon">⏰</div>
+                <h3>Medication Scheduler</h3>
+                <p>Each medicine card has "Add to Scheduler". Pick times based on frequency (1/day = 1 timestamp etc).
+                    Emails you the card with precautions & safety guardrails.</p>
+            </div>
+            <div class="feature feat-span-4" id="f6">
+                <div class="feature-icon">🌐</div>
+                <h3>11 Languages</h3>
+                <p>English, Hindi, Marathi, Tamil, Telugu, Bengali, Gujarati, Spanish, French, German + more. UI +
+                    responses adapt.</p>
+            </div>
+            <div class="feature feat-span-4" id="f7">
+                <div class="feature-icon">🛡️</div>
+                <h3>Safety Guardrails</h3>
+                <p>Emergency detection (chest pain, breathing difficulty, suicidal thoughts), no definitive diagnosis,
+                    no prescription of new drugs, always disclaimer, encourage professional care.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="how">
+    <div class="section-inner">
+        <div class="kicker">Flow</div>
+        <h2 class="section-title">From curiosity to clarity <br>in 4 calm steps.</h2>
+        <div class="how" id="howTrack">
+            <div class="step">
+                <div class="step-num">01</div>
+                <h4>Create profile & accept disclaimer</h4>
+                <p>First time only: see disclaimer, terms, privacy. Add age, weight, height, contacts, preferred
+                    language, health conditions, allergies.</p></div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <h4>Ask however you want</h4>
+                <p>Type, upload prescription image/PDF, upload skin photo, or hold mic to speak in your language. We
+                    store chat in SQLite.</p></div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <h4>Verified answer generation</h4>
+                <p>ChromaDB searched → if relevant, used. Else Gemini 1.5 Flash (your 3.6 key) answers in simple
+                    non-hallucinated language + guardrails.</p></div>
+            <div class="step">
+                <div class="step-num">04</div>
+                <h4>Act safely</h4>
+                <p>Medicine cards → add to scheduler → pick timestamps → email notification with card + precautions.
+                    Always see doctor for personal decisions.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="safety" id="safety">
+    <div class="safety-inner">
+        <div>
+            <div class="kicker" style="color:var(--green-300)">Safety like August AI</div>
+            <h2>We are careful so<br>you can be confident.</h2>
+            <p>Care Companion is an information companion, not a replacement for doctors. Modeled on August AI's
+                responsible health AI principles.</p>
+            <div class="safety-list">
+                <div class="safety-item"><span>✓</span>
+                    <div><strong style="color:white">No definitive diagnosis</strong>
+                        <div style="font-size:13px;color:#8abfb0">Uses "may be consistent with" language, encourages
+                            clinician confirmation.
+                        </div>
+                    </div>
+                </div>
+                <div class="safety-item"><span>✓</span>
+                    <div><strong style="color:white">Emergency redirection</strong>
+                        <div style="font-size:13px;color:#8abfb0">Chest pain, breathing difficulty, suicidal ideation →
+                            immediate emergency guidance, not chat.
+                        </div>
+                    </div>
+                </div>
+                <div class="safety-item"><span>✓</span>
+                    <div><strong style="color:white">Medication safety</strong>
+                        <div style="font-size:13px;color:#8abfb0">No new prescriptions. Only parses yours. Adds
+                            precautions, expiry checks, allergy reminders from profile.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px">
+                <div style="color:#5ee9b5;font-size:12px;font-weight:700;letter-spacing:0.08em">DISCLAIMER PREVIEW
+                    (first-time profile)
+                </div>
+                <div style="margin-top:14px;color:white;line-height:1.6;font-size:14px">
+                    Care Companion provides general health information for educational purposes only and does NOT
+                    provide medical advice, diagnosis, or treatment. Always seek a qualified healthcare provider with
+                    questions. In emergency call 112. Information is knowledge-base verified but may be incomplete. By
+                    continuing you accept Terms & Privacy.
+                </div>
+                <div style="margin-top:16px;display:flex;gap:10px"><span
+                        style="background:white;color:var(--green-900);padding:8px 14px;border-radius:100px;font-size:12px;font-weight:700">Accept & Continue</span><span
+                        style="border:1px solid rgba(255,255,255,0.2);padding:8px 14px;border-radius:100px;font-size:12px">Read Terms</span>
+                </div>
+            </div>
+            <div style="margin-top:18px;background:linear-gradient(135deg,#0f5d44,#16a085);border-radius:20px;padding:20px;color:white">
+                <div style="font-size:13px;opacity:0.9">Profile includes</div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px"><span
+                        style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:100px;font-size:11px">Name • Age • Weight • Height</span><span
+                        style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:100px;font-size:11px">Email • Contact • Emergency Contact</span><span
+                        style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:100px;font-size:11px">Preferred Language</span><span
+                        style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:100px;font-size:11px">Health Conditions</span><span
+                        style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:100px;font-size:11px">Allergies</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="foot-inner">
+        <div>
+            <div class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">Care <span>Companion</span></div>
+            </div>
+            <div style="margin-top:10px;font-size:13px;color:var(--muted);max-width:320px">Multimodal, multilingual
+                healthcare companion. Flask • SQLite • ChromaDB • Gemini 1.5 Flash • Faster Whisper. Built for learning
+                purpose with safety first.
+            </div>
+        </div>
+        <div style="font-size:13px;color:var(--muted)">
+            <div style="font-weight:700;color:var(--ink);margin-bottom:8px">Tech Stack</div>
+            Frontend: Flask + Vanilla JS + GSAP<br>Vector: ChromaDB + MiniLM<br>LLM: Gemini 1.5 Flash (stand-in for 3.6)<br>Voice:
+            Faster Whisper Large-v3<br>UI: Shades of green, professional
+        </div>
+        <div style="font-size:13px"><a href="/register" class="btn btn-primary">Get Started</a>
+            <div style="margin-top:12px;color:var(--muted)">© 2026 Care Companion<br>Not medical advice</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Cursor follower
+    const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    window.addEventListener('mousemove', e => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.transform = `translate(${mx - 4}px,${my - 4}px)`;
+    });
+    (function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.transform = `translate(${rx - 20}px,${ry - 20}px)`;
+        requestAnimationFrame(animateRing);
+    })();
+
+    // Particle canvas
+    const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d');
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    const particles = [];
+    for (let i = 0; i < 60; i++) particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3 + 0.5,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        a: Math.random() * 0.4 + 0.1
+    });
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(10,61,46,${p.a})`;
+            ctx.fill();
+            // connections
+            particles.forEach(o => {
+                const dx = p.x - o.x, dy = p.y - o.y, d = Math.hypot(dx, dy);
+                if (d < 120) {
+                    ctx.strokeStyle = `rgba(22,160,133,${0.08 * (1 - d / 120)})`;
+                    ctx.lineWidth = 0.6;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(o.x, o.y);
+                    ctx.stroke();
+                }
+            });
+        });
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("#nav", {y: -80, opacity: 0, duration: 1, ease: "power4.out"});
+    gsap.from("#heroTitle", {y: 80, opacity: 0, duration: 1.2, delay: 0.2, ease: "power4.out"});
+    gsap.from("#heroDesc", {y: 40, opacity: 0, duration: 0.9, delay: 0.4, ease: "power3.out"});
+    gsap.from("#heroActions", {y: 30, opacity: 0, duration: 0.8, delay: 0.5});
+    gsap.from("#heroVisual", {y: 60, scale: 0.96, opacity: 0, duration: 1.2, delay: 0.3, ease: "power4.out"});
+
+    // floating cards
+    gsap.to("#cardMain", {y: -10, duration: 2.5, yoyo: true, repeat: -1, ease: "sine.inOut"});
+    gsap.to("#cardPres", {y: -14, rotation: -2, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.3});
+    gsap.to("#cardSkin", {y: -12, rotation: 3, duration: 2.8, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.6});
+    gsap.to("#blob", {scale: 1.05, duration: 4, yoyo: true, repeat: -1, ease: "sine.inOut"});
+
+    // scroll triggers
+    gsap.from("#featKicker", {
+        scrollTrigger: {trigger: "#features", start: "top 80%"},
+        y: 20,
+        opacity: 0,
+        duration: 0.6
+    });
+    gsap.from("#featTitle", {
+        scrollTrigger: {trigger: "#features", start: "top 75%"},
+        y: 50,
+        opacity: 0,
+        duration: 0.8
+    });
+    gsap.from("#featDesc", {
+        scrollTrigger: {trigger: "#features", start: "top 70%"},
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2
+    });
+    gsap.utils.toArray(".feature").forEach((el, i) => {
+        gsap.from(el, {
+            scrollTrigger: {trigger: el, start: "top 85%"},
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.05,
+            ease: "power3.out"
+        });
+    });
+    gsap.from(".how .step", {
+        scrollTrigger: {trigger: "#how", start: "top 75%"},
+        x: 80,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12
+    });
+    gsap.from(".safety", {
+        scrollTrigger: {trigger: ".safety", start: "top 80%"},
+        y: 80,
+        opacity: 0,
+        scale: 0.98,
+        duration: 1,
+        ease: "power4.out"
+    });
+
+    // nav blur on scroll
+    ScrollTrigger.create({
+        start: "top -80", end: 99999, onUpdate: self => {
+            document.getElementById('nav').style.background = self.progress > 0 ? 'rgba(255,255,255,0.86)' : 'rgba(255,255,255,0.72)';
+        }
+    });
+</script>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'a2365c39ab89f4b7',t:'MTc4NTQzNTQ0Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
+</html>

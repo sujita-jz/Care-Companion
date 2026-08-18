@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer & Terms - Care Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --g900: #0a3d2e;
+            --g600: #16a085;
+            --mint: #f6fffd
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--mint);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(70% 80% at 30% 20%, rgba(22, 160, 133, 0.2), transparent 60%), linear-gradient(180deg, #f6fffd, #e8f8f3)
+        }
+
+        .wrap {
+            width: min(760px, 100%);
+            background: white;
+            border: 1px solid rgba(10, 61, 46, 0.08);
+            border-radius: 32px;
+            box-shadow: 0 24px 80px rgba(10, 61, 46, 0.12);
+            overflow: hidden
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0a3d2e, #0f5d44);
+            color: white;
+            padding: 32px
+        }
+
+        .header h1 {
+            font-family: 'Fraunces';
+            font-size: 34px;
+            letter-spacing: -0.02em
+        }
+
+        .header p {
+            margin-top: 8px;
+            color: #a7f3d0;
+            line-height: 1.5;
+            font-size: 14px
+        }
+
+        .body {
+            padding: 28px 32px
+        }
+
+        .notice {
+            background: #f0faf7;
+            border: 1px solid #bfe9d9;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            gap: 12px
+        }
+
+        .notice-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #0a3d2e;
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            flex: 0 0 36px
+        }
+
+        h3 {
+            font-family: 'Fraunces';
+            font-size: 18px;
+            color: #0a3d2e;
+            margin-top: 22px
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 18px;
+            color: #334e46;
+            font-size: 14px;
+            line-height: 1.7
+        }
+
+        .checks {
+            margin-top: 24px;
+            display: grid;
+            gap: 12px
+        }
+
+        .check {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: #f8fdfb;
+            border: 1px solid #d1f2e8;
+            border-radius: 14px;
+            padding: 12px 14px
+        }
+
+        .check input {
+            margin-top: 3px
+        }
+
+        .btn {
+            margin-top: 24px;
+            width: 100%;
+            height: 52px;
+            border-radius: 100px;
+            border: none;
+            background: #0a3d2e;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed
+        }
+
+        .error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-top: 12px
+        }
+
+        a {
+            color: #0f5d44;
+            font-weight: 700;
+            text-decoration: none
+        }
+    </style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:36px;height:36px;border-radius:10px;background:white;color:#0a3d2e;display:grid;place-items:center;font-family:Fraunces;font-weight:800">
+                C
+            </div>
+            <div style="font-weight:800">Care Companion</div>
+            <span style="background:rgba(255,255,255,0.15);padding:4px 10px;border-radius:100px;font-size:11px">First-time only</span>
+        </div>
+        <h1>Disclaimer & Terms</h1>
+        <p>Please read carefully. You will see this only once when your profile is created. Modeled after August AI
+            safety principles.</p>
+    </div>
+    <div class="body">
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <div class="notice">
+            <div class="notice-icon">!</div>
+            <div><strong style="color:#0a3d2e">Important Safety Information</strong>
+                <div style="margin-top:4px;font-size:13px;line-height:1.6;color:#2f5d50">Care Companion is an AI health
+                    information assistant, not a medical professional. All content is for educational purpose only and
+                    does NOT replace professional medical advice, diagnosis, or treatment. No definitive diagnosis, no
+                    new prescriptions. Always consult qualified healthcare provider.
+                </div>
+            </div>
+        </div>
+
+        <h3>🛡️ How Care Companion works</h3>
+        <ul>
+            <li><strong>Knowledge-base first:</strong> Every query searches ChromaDB medical knowledge. If answer found,
+                it is used and cited. If not, Gemini 1.5 Flash (Gemini 3.6 Flash compatible) generates simple,
+                non-hallucinated answer.
+            </li>
+            <li><strong>Multimodal:</strong> Text, image (prescription PDF/image, skin disease/cut), voice (Faster
+                Whisper Large-v3) — voice response in your preferred language set in profile.
+            </li>
+            <li><strong>Prescription parser:</strong> Extracts Medicine name, Dosage, Frequency, Duration, Route,
+                Instructions + general precaution. One-click add to scheduler.
+            </li>
+            <li><strong>Skin assist:</strong> Gives general info, possible similar conditions (non-definitive),
+                precautions, red flags. Never definitive diagnosis.
+            </li>
+            <li><strong>Medication scheduler:</strong> Email reminder via profile email with medicine card + safety
+                guardrails.
+            </li>
+        </ul>
+
+        <h3>⚠️ Safety Guardrails</h3>
+        <ul>
+            <li>Emergency keywords (chest pain, difficulty breathing, suicidal thoughts, stroke, heart attack) trigger
+                immediate emergency redirect (call 112 India).
+            </li>
+            <li>No dosage prescribing beyond your existing prescription.</li>
+            <li>Always includes disclaimer, encourages seeing doctor/pharmacist.</li>
+            <li>Respects profile: allergies, health conditions, preferred language.</li>
+            <li>Data: SQLite for auth & chat, ChromaDB for vectors. Private to user.</li>
+        </ul>
+
+        <h3>📜 Terms & Privacy (summary)</h3>
+        <ul>
+            <li>You provide accurate profile info (name, age, weight, height, email, contact, emergency contact,
+                language, health conditions, allergies optional).
+            </li>
+            <li>You will NOT upload harmful, illegal, or non-medical NSFW content.</li>
+            <li>You understand AI may make mistakes; verify with professionals.</li>
+            <li>We do not share your data. Emails only for medication reminders.</li>
+            <li>This is not emergency service. For emergency call 112 / local ER.</li>
+        </ul>
+
+        <form method="POST" id="form">
+            <div class="checks">
+                <label class="check">
+                    <input type="checkbox" name="accept_disclaimer" id="c1" required>
+                    <span style="font-size:13px;line-height:1.5"><strong>I have read and understood the disclaimer.</strong> I understand Care Companion is NOT a medical professional and provides only general health information. I will consult doctor for personal medical decisions. In emergency I will call 112.</span>
+                </label>
+                <label class="check">
+                    <input type="checkbox" name="accept_terms" id="c2" required>
+                    <span style="font-size:13px;line-height:1.5"><strong>I accept Terms & Privacy and safety guardrails.</strong> I agree not to misuse, not to seek definitive diagnosis/prescription, and to use responsibly. I consent to storing my profile and chat for my own use.</span>
+                </label>
+            </div>
+            <button class="btn" type="submit" id="btn" disabled>Accept & Build My Health Profile →</button>
+        </form>
+        <div style="margin-top:14px;text-align:center;font-size:12px;color:#5b7c72">You can review safety info anytime
+            in chat. Profile language controls response language.
+        </div>
+    </div>
+</div>
+<script>
+    const c1 = document.getElementById('c1'), c2 = document.getElementById('c2'), btn = document.getElementById('btn');
+
+    function update() {
+        btn.disabled = !(c1.checked && c2.checked);
+    }
+
+    c1.addEventListener('change', update);
+    c2.addEventListener('change', update);
+</script>
+<script>(function () {
+    function c() {
+        var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = "window.__CF$cv$params={r:'a2365bbf6addf4b7',t:'MTc4NTQzNTQyNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d)
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+            var e = document.onreadystatechange || function () {
+            };
+            document.onreadystatechange = function (b) {
+                e(b);
+                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+            }
+        }
+    }
+})();</script>
+</body>
+</html>

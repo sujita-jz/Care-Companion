@@ -1,0 +1,579 @@
+
+[2026-07-31 00:31:11.918762] TO:makwanavinit54@gmail.com SUBJ:💊 Care Companion Reminder: Time to take Syp LEVOLIN
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9;">Medication Reminder</p>
+            </div>
+            <div style="padding:24px;">
+                <p>Hi vinit makwana,</p>
+                <p>This is a gentle reminder to take your medicine:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 8px; color:#0a3d2e;">💊 Syp LEVOLIN</h3>
+                    <p style="margin:4px 0;"><strong>Dosage:</strong> 3 mL</p>
+                    <p style="margi
+---
+
+[2026-07-31 00:31:12.950109] TO:makwanavinit54@gmail.com SUBJ:💊 Care Companion Reminder: Time to take Syp LEVOLIN
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9;">Medication Reminder</p>
+            </div>
+            <div style="padding:24px;">
+                <p>Hi vinit makwana,</p>
+                <p>This is a gentle reminder to take your medicine:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 8px; color:#0a3d2e;">💊 Syp LEVOLIN</h3>
+                    <p style="margin:4px 0;"><strong>Dosage:</strong> 3 mL</p>
+                    <p style="margi
+---
+
+[2026-07-31 00:43:37.851319] TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected. This email is a confirmation with your medication card.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">00:44</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: Ongoing</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:1
+================================================================================
+
+[2026-07-31 00:44:51.413613] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 ml</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (दिन में 4 बार / हर 6 घंटे में)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 दिन</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>हर 6 घंटे में 4 ml लें।</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> बच्चों में पैरासिटामोल/एसिटामिनोफेन की सही खुराक का ध्यान रखना अत्यंत आवश्यक 
+================================================================================
+
+[2026-07-31 00:44:52.440905] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 ml</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (दिन में 4 बार / हर 6 घंटे में)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 दिन</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>हर 6 घंटे में 4 ml लें।</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> बच्चों में पैरासिटामोल/एसिटामिनोफेन की सही खुराक का ध्यान रखना अत्यंत आवश्यक 
+================================================================================
+
+[2026-07-31 01:09:52.102342] TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp MEFTAL-P (100/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected. This email is a confirmation with your medication card.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">01:10</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: Ongoing</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp MEFTAL-P (100/5)</h3>
+                    <table style="width
+================================================================================
+
+[2026-07-31 01:10:12.600675] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp MEFTAL-P (100/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp MEFTAL-P (100/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>3 ml</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>जरूरत पड़ने पर (SOS)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>आवश्यकतानुसार</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>तेज बुखार होने पर लें (For high fever)</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> केवल तेज बुखार की स्थिति में दें। डॉक्टर के परामर्श के बिना अधिक मा
+================================================================================
+
+[2026-07-31 01:10:13.623416] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp MEFTAL-P (100/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp MEFTAL-P (100/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>3 ml</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>जरूरत पड़ने पर (SOS)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>आवश्यकतानुसार</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>तेज बुखार होने पर लें (For high fever)</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> केवल तेज बुखार की स्थिति में दें। डॉक्टर के परामर्श के बिना अधिक मा
+================================================================================
+
+[2026-07-31 01:31:01.506140] TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected. This email is a confirmation with your medication card.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">01:31</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: 2026-08-02</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="widt
+================================================================================
+
+[2026-07-31 01:31:15.524912] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (दिन में 4 बार / हर 6 घंटे में)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 दिन</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td></td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> बच्चों और शिशुओं में उचित खुराक का ध्यान रखना अत्यंत आवश्यक है, क्योंकि एसिटामिनोफेन/पैरासिटामोल की 
+================================================================================
+
+[2026-07-31 01:31:16.528780] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (दिन में 4 बार / हर 6 घंटे में)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 दिन</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td></td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> बच्चों और शिशुओं में उचित खुराक का ध्यान रखना अत्यंत आवश्यक है, क्योंकि एसिटामिनोफेन/पैरासिटामोल की 
+================================================================================
+
+[2026-07-31 09:15:14.854808] TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected. This email is a confirmation with your medication card.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">09:15</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: Ongoing</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:1
+================================================================================
+
+[2026-07-31 09:15:15.608930] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (Every 6 hours)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Proper dosage is critical for pediatric patients as acetaminophen can be toxic if exceeded. Keep out 
+================================================================================
+
+[2026-07-31 09:52:36.627529] MOCK REASON: SMTP_EMAIL not set in .env
+TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp DELCON
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">09:53</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: 2026-07-31</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email - from your Care Companion profile)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp DELCON</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>3 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>TDS (Three times a day)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>5 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Follow prescribed dosing carefully. Ask a pharmacist if timing, dose, or interaction is unclear.
+                    </div>
+                </div>
+
+                <div style="background:#fff8e1; border-left:4px solid #ffb300; padding:12px 14px; border-radius:0 8px 8px 0; font-size:12px; line-height:1.5; color:#6d4c00; margin-bottom:16px;">
+                    <strong style="color:#0a3d2e;">Safety Guardrails:</strong><br>
+                    • Take exactly as prescribed by your doctor<br>
+                    • Do not double dose if you miss a dose<br>
+                    • Watch for allergic reactions: rash, swelling, breathing difficulty → emergency<br>
+                    • Check expiry, store as per label, keep away from children<br>
+                    • This app provides information only, not medical advice
+                </div>
+
+                <div style="background:#f6fffd; border:1px dashed #b2dfd1; border-radius:10px; padding:12px; font-size:12px; color:#4a756a;">
+                    <strong>What happens next?</strong><br>
+                    • You will receive a reminder email at <strong>09:53</strong> every day<br>
+                    • Each reminder contains this medication card<br>
+                    • To stop: Care Companion → Medications → Remove<br>
+                    • Your profile email <strong>makwanavinit54@gmail.com</strong> is used for all reminders (this is the email from your profile, not the sender)
+                </div>
+            </div>
+            <div style="background:#0a3d2e; color:#a7f3d0; text-align:center; padding:12px; font-size:10px;">
+                Care Companion • For emergency call 112 • Not medical advice
+            </div>
+        </div>
+    </body>
+    </html>
+    
+================================================================================
+
+[2026-07-31 09:53:14.388979] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp DELCON
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp DELCON</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>3 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>TDS (Three times a day)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>5 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Follow prescribed dosing carefully. Ask a pharmacist if timing, dose, or interaction is unclear.
+        
+================================================================================
+
+[2026-07-31 09:53:49.563074] MOCK REASON: SMTP_EMAIL not set in .env
+TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp DELCON
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp DELCON</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>3 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>TDS (Three times a day)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>5 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Follow prescribed dosing carefully. Ask a pharmacist if timing, dose, or interaction is unclear.
+                    </div>
+                </div>
+                <div style="background:#fff8e1; border-left:4px solid #ffb300; padding:12px 14px; border-radius:0 8px 8px 0; font-size:12px; line-height:1.5; color:#6d4c00;">
+                    <strong style="color:#0a3d2e;">Safety Guardrails:</strong><br>
+                    • Take exactly as prescribed<br>
+                    • Do not double dose if missed without doctor advice<br>
+                    • Watch for side effects: rash, swelling, breathing difficulty → seek help<br>
+                    • Store properly, check expiry<br>
+                    • This is a reminder tool, not medical advice.
+                </div>
+                <p style="font-size:11px; color:#888; margin-top:20px; line-height:1.4;">You received this because you scheduled it in Care Companion.<br>To stop: remove from scheduler in app.<br>Profile email: makwanavinit54@gmail.com</p>
+            </div>
+            <div style="background:#0a3d2e; color:#a7f3d0; text-align:center; padding:12px; font-size:10px;">
+                Care Companion • AI health info, not a medical professional • For emergency call 112
+            </div>
+        </div>
+    </body>
+    </html>
+    
+================================================================================
+
+[2026-07-31 10:02:12.255683] MOCK REASON: SMTP_EMAIL not set in .env
+TO:makwanavinit54@gmail.com | SUBJ:✅ Care Companion: Medication Schedule Created - Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #0f5d44); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">✅ Medication Schedule Confirmation</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46; line-height:1.5;">
+                    Your medication schedule has been <strong>successfully created</strong>. 
+                    You will now receive email reminders at the times you selected.
+                </p>
+                
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:14px 16px; margin:0 0 16px 0; font-size:13px;">
+                    <strong style="color:#065f46;">⏰ Your Schedule:</strong><br>
+                    <span style="font-size:15px; font-weight:700; color:#0a3d2e;">10:03</span> (24h format)<br>
+                    <span style="color:#5b7c72; font-size:12px;">Start: 2026-07-31 | End: Ongoing</span><br>
+                    <span style="color:#5b7c72; font-size:12px;">Reminders will be sent to: <strong>makwanavinit54@gmail.com</strong> (your profile email - from your Care Companion profile)</span>
+                </div>
+
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:0 0 16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (Every 6 hours)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Proper dosage is critical for pediatric patients as acetaminophen can be toxic if exceeded. Keep out of reach of children.
+                    </div>
+                </div>
+
+                <div style="background:#fff8e1; border-left:4px solid #ffb300; padding:12px 14px; border-radius:0 8px 8px 0; font-size:12px; line-height:1.5; color:#6d4c00; margin-bottom:16px;">
+                    <strong style="color:#0a3d2e;">Safety Guardrails:</strong><br>
+                    • Take exactly as prescribed by your doctor<br>
+                    • Do not double dose if you miss a dose<br>
+                    • Watch for allergic reactions: rash, swelling, breathing difficulty → emergency<br>
+                    • Check expiry, store as per label, keep away from children<br>
+                    • This app provides information only, not medical advice
+                </div>
+
+                <div style="background:#f6fffd; border:1px dashed #b2dfd1; border-radius:10px; padding:12px; font-size:12px; color:#4a756a;">
+                    <strong>What happens next?</strong><br>
+                    • You will receive a reminder email at <strong>10:03</strong> every day<br>
+                    • Each reminder contains this medication card<br>
+                    • To stop: Care Companion → Medications → Remove<br>
+                    • Your profile email <strong>makwanavinit54@gmail.com</strong> is used for all reminders (this is the email from your profile, not the sender)
+                </div>
+            </div>
+            <div style="background:#0a3d2e; color:#a7f3d0; text-align:center; padding:12px; font-size:10px;">
+                Care Companion • For emergency call 112 • Not medical advice
+            </div>
+        </div>
+    </body>
+    </html>
+    
+================================================================================
+
+[2026-07-31 10:03:14.388929] TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (Every 6 hours)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Proper dosage is critical for pediatric patients as acetaminophen can be toxic if exceeded. Keep out 
+================================================================================
+
+[2026-07-31 10:03:49.562943] MOCK REASON: SMTP_EMAIL not set in .env
+TO:makwanavinit54@gmail.com | SUBJ:💊 Care Companion Reminder: Time to take Syp CALPOL (250/5)
+
+    <html>
+    <body style="font-family: 'Segoe UI', Arial; background:#e8f8f3; padding:20px; margin:0;">
+        <div style="max-width:600px; margin:auto; background:white; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <div style="background: linear-gradient(135deg, #0a3d2e, #16a085); padding:24px; color:white;">
+                <h2 style="margin:0; font-weight:700; font-size:20px;">Care Companion</h2>
+                <p style="margin:4px 0 0; opacity:0.9; font-size:13px;">Medication Reminder ⏰</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 8px; font-size:14px;">Hi <strong>vinit makwana</strong>,</p>
+                <p style="margin:0 0 16px; font-size:14px; color:#334e46;">This is a gentle reminder to take your medicine now:</p>
+                <div style="background:#f0faf7; border:1px solid #b2dfd1; border-radius:12px; padding:16px; margin:16px 0;">
+                    <h3 style="margin:0 0 12px; color:#0a3d2e; font-size:16px;">💊 Syp CALPOL (250/5)</h3>
+                    <table style="width:100%; font-size:13px; border-collapse:separate; border-spacing:0 6px;">
+                        <tr><td style="color:#5b7c72; width:90px;"><strong>Dosage:</strong></td><td>4 mL</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Frequency:</strong></td><td>Q6H (Every 6 hours)</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Duration:</strong></td><td>3 days</td></tr>
+                        <tr><td style="color:#5b7c72;"><strong>Instructions:</strong></td><td>None specified</td></tr>
+                    </table>
+                    <div style="margin-top:12px; background:#fff3cd; border:1px solid #ffe082; padding:10px 12px; border-radius:8px; font-size:12px; line-height:1.5;">
+                        <strong>⚠️ Precautions:</strong> Proper dosage is critical for pediatric patients as acetaminophen can be toxic if exceeded. Keep out of reach of children.
+                    </div>
+                </div>
+                <div style="background:#fff8e1; border-left:4px solid #ffb300; padding:12px 14px; border-radius:0 8px 8px 0; font-size:12px; line-height:1.5; color:#6d4c00;">
+                    <strong style="color:#0a3d2e;">Safety Guardrails:</strong><br>
+                    • Take exactly as prescribed<br>
+                    • Do not double dose if missed without doctor advice<br>
+                    • Watch for side effects: rash, swelling, breathing difficulty → seek help<br>
+                    • Store properly, check expiry<br>
+                    • This is a reminder tool, not medical advice.
+                </div>
+                <p style="font-size:11px; color:#888; margin-top:20px; line-height:1.4;">You received this because you scheduled it in Care Companion.<br>To stop: remove from scheduler in app.<br>Profile email: makwanavinit54@gmail.com</p>
+            </div>
+            <div style="background:#0a3d2e; color:#a7f3d0; text-align:center; padding:12px; font-size:10px;">
+                Care Companion • AI health info, not a medical professional • For emergency call 112
+            </div>
+        </div>
+    </body>
+    </html>
+    
+================================================================================
